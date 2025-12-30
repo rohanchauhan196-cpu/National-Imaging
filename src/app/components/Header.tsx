@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, User, Shield, Activity, Thermometer, Flame, Droplet, TestTube, HeartPulse, ShieldPlus } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
@@ -23,9 +23,15 @@ const Header = ({ topOffset }: HeaderProps) => {
   }, []);
 
   const packages = [
-    ['Full Body Checkup', 'Cardiac Health Package', 'Diabetes Screening'],
-    ['Thyroid Profile', 'Liver Function Test', 'Kidney Function Test'],
-    ['Vitamin Profile', "Women's Health", "Men's Health"],
+    { name: 'Health Panel-Whole Body', icon: User },
+    { name: 'Preventive Health Panel- Comprehensive', icon: Shield },
+    { name: 'Preventive Health Panel- Comprehensive+', icon: ShieldPlus },
+    { name: 'Routine Health panel', icon: Activity },
+    { name: 'Fever Profile Basic', icon: Thermometer },
+    { name: 'Fever Profile Advance', icon: HeartPulse },
+    { name: 'Fever Panel-I', icon: Flame },
+    { name: 'EXTENDED IRON PROFILE', icon: Droplet },
+    { name: 'Diabetic Profile', icon: TestTube },
   ];
 
   const blogs = [
@@ -78,22 +84,23 @@ const Header = ({ topOffset }: HeaderProps) => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[600px] bg-white rounded-lg shadow-xl border p-6"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-white rounded-lg shadow-xl border p-6 z-50"
                     >
-                      <div className="grid grid-cols-3 gap-4">
-                        {packages.map((col, i) => (
-                          <div key={i} className="space-y-2">
-                            {col.map((pkg, j) => (
-                              <motion.a
-                                key={j}
-                                href="#"
-                                whileHover={{ x: 5 }}
-                                className="block px-3 py-2 text-sm hover:text-primary hover:bg-muted rounded-md"
-                              >
-                                {pkg}
-                              </motion.a>
-                            ))}
-                          </div>
+                      <div className="grid grid-cols-3 gap-6">
+                        {packages.map((pkg, i) => (
+                          <motion.a
+                            key={i}
+                            href="#"
+                            whileHover={{ x: 5, backgroundColor: 'rgba(var(--primary-rgb), 0.05)' }}
+                            className="flex items-start gap-3 p-3 rounded-lg hover:text-primary transition-colors group"
+                          >
+                            <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
+                              <pkg.icon className="w-5 h-5" />
+                            </div>
+                            <span className="text-sm font-medium leading-tight mt-1">
+                              {pkg.name}
+                            </span>
+                          </motion.a>
                         ))}
                       </div>
                     </motion.div>
