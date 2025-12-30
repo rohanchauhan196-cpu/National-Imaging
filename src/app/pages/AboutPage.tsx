@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 import { Microscope, Activity, Award, Users, Heart, Target } from 'lucide-react';
+import about1 from '../../assets/about1.jpeg';
+import about2 from '../../assets/about2.jpeg';
 
 const AboutPage = () => {
     const fadeInUp = {
@@ -65,7 +67,7 @@ const AboutPage = () => {
                             className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl"
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80"
+                                src={about2}
                                 alt="Modern Medical Laboratory"
                                 className="w-full h-full object-cover"
                             />
@@ -130,7 +132,7 @@ const AboutPage = () => {
                         >
                             <div className="absolute inset-0 bg-primary/5 rounded-2xl transform rotate-3"></div>
                             <img
-                                src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                                src={about1}
                                 alt="Advanced Medical Technology"
                                 className="relative rounded-2xl shadow-xl z-10"
                             />
