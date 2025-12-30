@@ -134,7 +134,7 @@ const Header = ({ topOffset }: HeaderProps) => {
                 </AnimatePresence>
               </div>
 
-              <NavLink to="/#contact">Contact</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </nav>
 
             {/* CTA */}

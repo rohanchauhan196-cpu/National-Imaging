@@ -58,7 +58,7 @@ const Footer = () => {
                 { name: 'Services', path: '/#services' },
                 { name: 'Health Packages', path: '#' },
                 { name: 'Blogs', path: '#' },
-                { name: 'Contact', path: '/#contact' }
+                { name: 'Contact', path: '/contact' }
               ].map((link, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
                   <Link to={link.path} className="text-gray-400 hover:text-primary transition-colors duration-200">
