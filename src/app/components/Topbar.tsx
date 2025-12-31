@@ -25,15 +25,17 @@ const Topbar = ({ isVisible }: { isVisible: boolean }) => {
           </div>
 
           {/* Center - Search Bar */}
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
-            <div className="relative">
-              {/* Desktop Input */}
-              <input
+          <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
+            <div className="relative group">
+              <motion.input
+                whileFocus={{ width: '320px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+                initial={{ width: '240px' }}
+                transition={{ duration: 0.3 }}
                 type="text"
-                placeholder="Search tests..."
-                className="hidden md:block w-64 px-3 py-1 pr-8 bg-white border rounded-md text-sm focus:ring-2 focus:ring-primary/20"
+                placeholder="Search for tests, packages..."
+                className="w-60 pl-10 pr-4 py-1.5 bg-white border border-gray-200 rounded-full text-sm focus:outline-none focus:border-primary/50 text-gray-600 placeholder:text-gray-400"
               />
-              <Search className="w-4 h-4 text-muted-foreground md:absolute md:right-2.5 md:top-1/2 md:-translate-y-1/2 cursor-pointer" />
+              <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             </div>
           </div>
 

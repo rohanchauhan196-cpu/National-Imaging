@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Microscope, Activity, Stethoscope, Droplet, Heart, Brain } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -7,37 +8,23 @@ const services = [
     title: 'Pathology',
     description: 'Comprehensive blood tests, urine analysis, and tissue examination with accurate results.',
     color: 'bg-blue-100 text-blue-600',
+    link: '/services/pathology'
   },
   {
     icon: <Activity className="w-8 h-8" />,
     title: 'Radiology',
     description: 'Advanced imaging services including X-Ray, CT Scan, MRI, and Ultrasound.',
     color: 'bg-red-100 text-red-600',
+    link: '#'
   },
   {
     icon: <Heart className="w-8 h-8" />,
     title: 'Cardiology Tests',
     description: 'ECG, Echo, TMT, and comprehensive cardiac health assessments.',
     color: 'bg-purple-100 text-purple-600',
+    link: '#'
   },
-  {
-    icon: <Droplet className="w-8 h-8" />,
-    title: 'Biochemistry',
-    description: 'Complete metabolic panel, hormone tests, and biochemical analysis.',
-    color: 'bg-cyan-100 text-cyan-600',
-  },
-  {
-    icon: <Stethoscope className="w-8 h-8" />,
-    title: 'Clinical Tests',
-    description: 'Specialized clinical diagnostic services for various health conditions.',
-    color: 'bg-green-100 text-green-600',
-  },
-  {
-    icon: <Brain className="w-8 h-8" />,
-    title: 'Molecular Tests',
-    description: 'Advanced molecular diagnostics and genetic testing services.',
-    color: 'bg-indigo-100 text-indigo-600',
-  },
+
 ];
 
 const ServicesSection = () => {
@@ -63,7 +50,7 @@ const ServicesSection = () => {
             Comprehensive <span className="text-primary">Diagnostic Services</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            State-of-the-art diagnostic facilities with experienced professionals 
+            State-of-the-art diagnostic facilities with experienced professionals
             ensuring accurate and timely results.
           </p>
         </motion.div>
@@ -88,9 +75,8 @@ const ServicesSection = () => {
                 </motion.div>
                 <h3 className="text-xl mb-3">{service.title}</h3>
                 <p className="text-muted-foreground mb-4">{service.description}</p>
-                <motion.a
-                  href="#"
-                  whileHover={{ x: 5 }}
+                <Link
+                  to={service.link}
                   className="text-primary inline-flex items-center gap-2 group-hover:gap-3 transition-all"
                 >
                   Learn More
@@ -100,7 +86,7 @@ const ServicesSection = () => {
                   >
                     →
                   </motion.span>
-                </motion.a>
+                </Link>
               </div>
             </motion.div>
           ))}
