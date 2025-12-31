@@ -45,7 +45,7 @@ const Header = ({ topOffset }: HeaderProps) => {
         /* ✅ SMOOTH TOP SHIFT */
         animate={{ top: topOffset }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className={`fixed left-0 right-0 z-40 border-b border-border bg-white transition-shadow ${isScrolled ? 'shadow-md' : ''
+        className={`fixed left-0 right-0 z-40 bg-white transition-shadow ${isScrolled ? 'shadow-md' : ''
           }`}
       >
         <div className="container mx-auto px-4">
@@ -127,14 +127,15 @@ const Header = ({ topOffset }: HeaderProps) => {
                       className="absolute top-full mt-2 w-48 bg-white rounded-lg shadow-xl border p-2"
                     >
                       {blogs.map((blog, i) => (
-                        <motion.a
+                        <Link
                           key={i}
-                          href={blog.path}
-                          whileHover={{ x: 5 }}
+                          to={blog.path === '/blogs' ? '/blog' : blog.path}
                           className="block px-3 py-2 text-sm hover:text-primary hover:bg-muted rounded-md"
                         >
-                          {blog.title}
-                        </motion.a>
+                          <motion.span whileHover={{ x: 5 }} className="block">
+                            {blog.title}
+                          </motion.span>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
