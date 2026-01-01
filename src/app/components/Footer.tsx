@@ -61,7 +61,7 @@ const Footer = () => {
                 { name: 'Contact', path: '/contact' }
               ].map((link, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
-                  <Link to={link.path} className="text-gray-400 hover:text-primary transition-colors duration-200">
+                  <Link to={link.path} className="text-gray-400 hover:text-secondary transition-colors duration-200">
                     {link.name}
                   </Link>
                 </motion.li>
@@ -80,7 +80,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {['Pathology', 'Radiology', 'Cardiology', 'Biochemistry', 'Clinical Tests', 'Home Collection'].map((service, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
-                  <Link to="/#services" className="text-gray-400 hover:text-primary transition-colors duration-200">
+                  <Link to="/#services" className="text-gray-400 hover:text-secondary transition-colors duration-200">
                     {service}
                   </Link>
                 </motion.li>
@@ -106,16 +106,16 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:+919711127333" className="text-gray-400 hover:text-primary transition-colors duration-200">
+                <a href="tel:+919711127333" className="text-gray-400 hover:text-secondary transition-colors duration-200">
                   +91 97111 27333
                 </a>
-                <a href="tel:+919711128333" className="text-gray-400 hover:text-primary transition-colors duration-200">
+                <a href="tel:+919711128333" className="text-gray-400 hover:text-secondary transition-colors duration-200">
                   +91 97111 28333
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="mailto:nipathlabs@gmail.com" className="text-gray-400 hover:text-primary transition-colors duration-200">
+                <a href="mailto:nipathlabs@gmail.com" className="text-gray-400 hover:text-secondary transition-colors duration-200">
                   nipathlabs@gmail.com
                 </a>
               </li>
@@ -139,21 +139,21 @@ const Footer = () => {
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-400 hover:text-primary transition-colors duration-200"
+                className="text-gray-400 hover:text-secondary transition-colors duration-200"
               >
                 Privacy Policy
               </motion.a>
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-400 hover:text-primary transition-colors duration-200"
+                className="text-gray-400 hover:text-secondary transition-colors duration-200"
               >
                 Terms & Conditions
               </motion.a>
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-400 hover:text-primary transition-colors duration-200"
+                className="text-gray-400 hover:text-secondary transition-colors duration-200"
               >
                 Sitemap
               </motion.a>
