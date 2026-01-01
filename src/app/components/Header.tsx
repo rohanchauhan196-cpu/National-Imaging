@@ -23,15 +23,15 @@ const Header = ({ topOffset }: HeaderProps) => {
   }, []);
 
   const packages = [
-    { name: 'Health Panel-Whole Body', icon: User },
-    { name: 'Preventive Health Panel- Comprehensive', icon: Shield },
-    { name: 'Preventive Health Panel- Comprehensive+', icon: ShieldPlus },
-    { name: 'Routine Health panel', icon: Activity },
-    { name: 'Fever Profile Basic', icon: Thermometer },
-    { name: 'Fever Profile Advance', icon: HeartPulse },
-    { name: 'Fever Panel-I', icon: Flame },
-    { name: 'EXTENDED IRON PROFILE', icon: Droplet },
-    { name: 'Diabetic Profile', icon: TestTube },
+    { name: 'Health Panel-Whole Body', icon: User, path: '/packages/health-panel-whole-body' },
+    { name: 'Preventive Health Panel- Comprehensive', icon: Shield, path: '#' },
+    { name: 'Preventive Health Panel- Comprehensive+', icon: ShieldPlus, path: '#' },
+    { name: 'Routine Health panel', icon: Activity, path: '#' },
+    { name: 'Fever Profile Basic', icon: Thermometer, path: '#' },
+    { name: 'Fever Profile Advance', icon: HeartPulse, path: '#' },
+    { name: 'Fever Panel-I', icon: Flame, path: '#' },
+    { name: 'EXTENDED IRON PROFILE', icon: Droplet, path: '#' },
+    { name: 'Diabetic Profile', icon: TestTube, path: '#' },
   ];
 
   const blogs = [
@@ -88,11 +88,10 @@ const Header = ({ topOffset }: HeaderProps) => {
                     >
                       <div className="grid grid-cols-3 gap-6">
                         {packages.map((pkg, i) => (
-                          <motion.a
+                          <Link
                             key={i}
-                            href="#"
-                            whileHover={{ x: 5, backgroundColor: 'rgba(var(--primary-rgb), 0.05)' }}
-                            className="flex items-start gap-3 p-3 rounded-lg hover:text-primary transition-colors group"
+                            to={pkg.path}
+                            className="flex items-start gap-3 p-3 rounded-lg hover:text-primary transition-colors group hover:bg-slate-50"
                           >
                             <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
                               <pkg.icon className="w-5 h-5" />
@@ -100,7 +99,7 @@ const Header = ({ topOffset }: HeaderProps) => {
                             <span className="text-sm font-medium leading-tight mt-1">
                               {pkg.name}
                             </span>
-                          </motion.a>
+                          </Link>
                         ))}
                       </div>
                     </motion.div>

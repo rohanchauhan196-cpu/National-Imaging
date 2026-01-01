@@ -8,6 +8,8 @@ import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import ScrollToTop from './components/ScrollToTop';
 
+import HealthPanelWholeBodyPage from './pages/HealthPanelWholeBodyPage';
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,6 +20,7 @@ const App = () => {
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="services/pathology" element={<PathologyServicesPage />} />
+          <Route path="packages/health-panel-whole-body" element={<HealthPanelWholeBodyPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogPostPage />} />
         </Route>
