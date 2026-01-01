@@ -98,12 +98,13 @@ const ContactPage = () => {
                                         </a>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div className="mt-12 p-6 bg-secondary rounded-xl text-center">
-                                    <p className="text-lg font-medium text-secondary-foreground">
-                                        Visit us for Fast • Accurate • Affordable diagnostic services.
-                                    </p>
-                                </div>
+                            <div className="mt-12 p-6 bg-secondary rounded-xl text-center">
+                                <p className="text-lg font-medium text-secondary-foreground">
+                                    Visit us for Fast • Accurate • Affordable diagnostic services.
+                                </p>
+                            </div>
                         </motion.div>
 
                         {/* Map */}
