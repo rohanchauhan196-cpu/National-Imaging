@@ -68,8 +68,8 @@ const ContactPage = () => {
                                             <a href="tel:+919711127333" className="text-muted-foreground hover:text-primary transition-colors">
                                                 +91 97111 27333
                                             </a>
-                                            <a href="tel:+919217244110" className="text-muted-foreground hover:text-primary transition-colors">
-                                                +91 92172 44110
+                                            <a href="tel:+919711128333" className="text-muted-foreground hover:text-primary transition-colors">
+                                                +91 97111 28333
                                             </a>
                                         </div>
                                     </div>
@@ -82,17 +82,28 @@ const ContactPage = () => {
                                     <div>
                                         <h3 className="font-semibold text-xl mb-2">Timings</h3>
                                         <p className="text-muted-foreground">
-                                            7:00 AM – 10:00 PM (All 7 Days)
+                                            8:00 AM – 9:00 PM (All 7 Days)
                                         </p>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="mt-12 p-6 bg-secondary rounded-xl text-center">
-                                <p className="text-lg font-medium text-secondary-foreground">
-                                    Visit us for Fast • Accurate • Affordable diagnostic services.
-                                </p>
-                            </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="bg-primary/10 p-3 rounded-full">
+                                        <Mail className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-xl mb-2">Email Us</h3>
+                                        <a href="mailto:nipathlabs@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                                            nipathlabs@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className="mt-12 p-6 bg-secondary rounded-xl text-center">
+                                    <p className="text-lg font-medium text-secondary-foreground">
+                                        Visit us for Fast • Accurate • Affordable diagnostic services.
+                                    </p>
+                                </div>
                         </motion.div>
 
                         {/* Map */}

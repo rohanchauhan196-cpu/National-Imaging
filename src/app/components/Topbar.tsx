@@ -13,14 +13,14 @@ const Topbar = ({ isVisible }: { isVisible: boolean }) => {
 
           {/* Left - Contact Info (Visible on Mobile now) */}
           <div className="flex items-center gap-4 md:gap-6 text-muted-foreground mr-auto bg-slate-50">
-            <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-1 hover:text-primary text-xs md:text-sm">
+            <a href="tel:+919711127333" className="flex items-center gap-1 hover:text-primary text-xs md:text-sm">
               <Phone className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">+91 9953301012, +91 9217244110</span>
+              <span className="hidden sm:inline">+91 9711127333, +91 9711128333</span>
               <span className="sm:hidden">Call Us</span>
             </a>
-            <a href="mailto:info@nationalimaging.com" className="hidden md:flex items-center gap-1 hover:text-primary">
+            <a href="mailto:nipathlabs@gmail.com" className="hidden md:flex items-center gap-1 hover:text-primary">
               <Mail className="w-3.5 h-3.5" />
-              <span>info@molecularit.com</span>
+              <span>nipathlabs@gmail.com</span>
             </a>
           </div>
 
