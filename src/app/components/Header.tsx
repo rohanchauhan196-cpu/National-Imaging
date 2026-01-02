@@ -28,7 +28,7 @@ const Header = ({ topOffset }: HeaderProps) => {
     { name: 'Preventive Health Panel- Comprehensive+', icon: ShieldPlus, path: '/packages/preventive-comprehensive-plus' },
     { name: 'Routine Health panel', icon: Activity, path: '/packages/routine-health' },
     { name: 'Fever Profile Basic', icon: Thermometer, path: '/packages/fever-basic' },
-    { name: 'Fever Profile Advance', icon: HeartPulse, path: '#' },
+    { name: 'Fever Profile Advance', icon: HeartPulse, path: '/packages/fever-advance' },
     { name: 'Fever Panel-I', icon: Flame, path: '#' },
     { name: 'EXTENDED IRON PROFILE', icon: Droplet, path: '#' },
     { name: 'Diabetic Profile', icon: TestTube, path: '#' },

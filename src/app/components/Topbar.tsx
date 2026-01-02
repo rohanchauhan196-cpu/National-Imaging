@@ -18,9 +18,9 @@ const Topbar = ({ isVisible }: { isVisible: boolean }) => {
               <span className="hidden sm:inline">+91 9711127333</span>
               <span className="sm:hidden">Call Us</span>
             </a>
-            <a href="tel:+919711127333" className="flex items-center gap-1 hover:text-secondary text-xs md:text-sm">
+            <a href="tel:+9192172 44110" className="flex items-center gap-1 hover:text-secondary text-xs md:text-sm">
               <Phone className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">+91 9711128333</span>
+              <span className="hidden sm:inline">+91 9217244110</span>
             </a>
             <a href="mailto:nipathlabs@gmail.com" className="hidden md:flex items-center gap-1 hover:text-secondary">
               <Mail className="w-3.5 h-3.5" />
