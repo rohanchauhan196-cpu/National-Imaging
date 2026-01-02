@@ -24,7 +24,7 @@ const Header = ({ topOffset }: HeaderProps) => {
 
   const packages = [
     { name: 'Health Panel-Whole Body', icon: User, path: '/packages/health-panel-whole-body' },
-    { name: 'Preventive Health Panel- Comprehensive', icon: Shield, path: '#' },
+    { name: 'Preventive Health Panel- Comprehensive', icon: Shield, path: '/packages/preventive-comprehensive' },
     { name: 'Preventive Health Panel- Comprehensive+', icon: ShieldPlus, path: '#' },
     { name: 'Routine Health panel', icon: Activity, path: '#' },
     { name: 'Fever Profile Basic', icon: Thermometer, path: '#' },

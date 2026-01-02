@@ -81,9 +81,8 @@ const TopPackages = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className={`relative bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border-2 ${
-                pkg.popular ? 'border-primary' : 'border-border'
-              }`}
+              className={`relative bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border-2 ${pkg.popular ? 'border-primary' : 'border-border'
+                }`}
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -114,11 +113,10 @@ const TopPackages = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full py-3 rounded-md transition-colors duration-200 ${
-                  pkg.popular
+                className={`w-full py-3 rounded-md transition-colors duration-200 ${pkg.popular
                     ? 'bg-primary text-white hover:bg-primary/90'
                     : 'bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white'
-                }`}
+                  }`}
               >
                 Book Now
               </motion.button>
@@ -134,7 +132,7 @@ const TopPackages = () => {
           className="text-center mt-12"
         >
           <motion.a
-            href="#"
+            href="/all-packages" // Changed to point to the new page
             whileHover={{ scale: 1.05 }}
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
           >

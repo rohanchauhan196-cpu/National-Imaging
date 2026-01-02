@@ -80,7 +80,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {['Pathology', 'Radiology', 'Cardiology', 'Biochemistry', 'Clinical Tests', 'Home Collection'].map((service, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
-                  <Link to="/#services" className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                  <Link to={service === 'Radiology' ? '/services/radiology' : service === 'Pathology' ? '/services/pathology' : service === 'Cardiology' ? '/services/cardiology' : '/#services'} className="text-gray-400 hover:text-secondary transition-colors duration-200">
                     {service}
                   </Link>
                 </motion.li>

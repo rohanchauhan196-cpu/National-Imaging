@@ -15,14 +15,14 @@ const services = [
     title: 'Radiology',
     description: 'Advanced imaging services including X-Ray, CT Scan, MRI, and Ultrasound.',
     color: 'bg-red-100 text-red-600',
-    link: '#'
+    link: '/services/radiology'
   },
   {
     icon: <Heart className="w-8 h-8" />,
     title: 'Cardiology Tests',
     description: 'ECG, Echo, TMT, and comprehensive cardiac health assessments.',
     color: 'bg-purple-100 text-purple-600',
-    link: '#'
+    link: '/services/cardiology'
   },
 
 ];
