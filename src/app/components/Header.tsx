@@ -30,8 +30,8 @@ const Header = ({ topOffset }: HeaderProps) => {
     { name: 'Fever Profile Basic', icon: Thermometer, path: '/packages/fever-basic' },
     { name: 'Fever Profile Advance', icon: HeartPulse, path: '/packages/fever-advance' },
     { name: 'Fever Panel-I', icon: Flame, path: '/packages/fever-panel-i' },
-    { name: 'EXTENDED IRON PROFILE', icon: Droplet, path: '#' },
-    { name: 'Diabetic Profile', icon: TestTube, path: '#' },
+    { name: 'EXTENDED IRON PROFILE', icon: Droplet, path: '/packages/extended-iron-profile' },
+    { name: 'Diabetic Profile', icon: TestTube, path: '/packages/diabetic-profile' },
   ];
 
   const blogs = [

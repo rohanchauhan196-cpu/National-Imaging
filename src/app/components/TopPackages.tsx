@@ -1,46 +1,52 @@
 import { motion } from 'motion/react';
 import { Check, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const packages = [
   {
-    name: 'Basic Health Checkup',
-    price: '₹999',
-    tests: 45,
-    popular: false,
-    features: [
-      'Complete Blood Count',
-      'Lipid Profile',
-      'Blood Sugar',
-      'Kidney Function Test',
-      'Liver Function Test',
-    ],
-  },
-  {
-    name: 'Full Body Checkup',
-    price: '₹2499',
-    tests: 85,
+    name: 'Preventive Health Panel – Comprehensive',
+    price: '₹1800',
+    tests: 65,
     popular: true,
+    link: '/packages/preventive-comprehensive',
     features: [
-      'All Basic Tests',
+      'Complete Hemogram',
       'Thyroid Profile',
-      'Vitamin D & B12',
-      'Iron Studies',
-      'Cardiac Risk Markers',
-      'HbA1c',
+      'Liver Function Test',
+      'Kidney Function Test',
+      'Lipid Profile',
+      'Hba1c',
+      'Iron Profile'
     ],
   },
   {
-    name: 'Advanced Health Package',
-    price: '₹4999',
-    tests: 120,
+    name: 'Fever Profile – Advanced',
+    price: '₹1600',
+    tests: 6,
     popular: false,
+    link: '/packages/fever-advance',
     features: [
-      'All Full Body Tests',
-      'Cancer Markers',
-      'Hormone Panel',
-      'ECG',
-      'Ultrasound Abdomen',
-      'Doctor Consultation',
+      'Blood Culture & Sensitivity',
+      'CRP (Quantative)',
+      'Malaria Antigen',
+      'Widal Test',
+      'CBC',
+      'Urine Analysis',
+    ],
+  },
+  {
+    name: 'Diabetic Profile',
+    price: '₹1000',
+    tests: 7,
+    popular: false,
+    link: '/packages/diabetic-profile',
+    features: [
+      'HbA1c',
+      'Fasting Sugar',
+      'Lipid Profile',
+      'Serum Creatinine',
+      'Uric Acid',
+      'Urine Microalbumin',
     ],
   },
 ];
@@ -110,16 +116,15 @@ const TopPackages = () => {
                 ))}
               </ul>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`w-full py-3 rounded-md transition-colors duration-200 ${pkg.popular
-                    ? 'bg-primary text-white hover:bg-primary/90'
-                    : 'bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white'
+              <Link
+                to={pkg.link}
+                className={`block w-full py-3 rounded-md transition-colors duration-200 text-center ${pkg.popular
+                  ? 'bg-primary text-white hover:bg-primary/90'
+                  : 'bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white'
                   }`}
               >
-                Book Now
-              </motion.button>
+                View Details
+              </Link>
             </motion.div>
           ))}
         </div>
