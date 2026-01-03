@@ -13,6 +13,8 @@ const Header = ({ topOffset }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [showMobilePackages, setShowMobilePackages] = useState(false);
+  const [showMobileBlogs, setShowMobileBlogs] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +37,7 @@ const Header = ({ topOffset }: HeaderProps) => {
   ];
 
   const blogs = [
-    { title: 'Latest News', path: '/news' },
+    // { title: 'Latest News', path: '/news' },
     { title: 'Health Blogs', path: '/blogs' },
   ];
 
@@ -176,7 +178,7 @@ const Header = ({ topOffset }: HeaderProps) => {
             className="fixed inset-0 z-30 lg:hidden bg-white"
             style={{ top: topOffset + 80 }}
           >
-            <nav className="p-6 space-y-4">
+            <nav className="p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-180px)]">
               <MobileNavLink to="/" onClick={() => setIsMobileMenuOpen(false)}>
                 Home
               </MobileNavLink>
@@ -186,6 +188,114 @@ const Header = ({ topOffset }: HeaderProps) => {
               <MobileNavLink to="/all-services" onClick={() => setIsMobileMenuOpen(false)}>
                 Services
               </MobileNavLink>
+
+              {/* Packages Dropdown for Mobile */}
+              <div>
+                <button
+                  onClick={() => setShowMobilePackages(!showMobilePackages)}
+                  className="w-full flex items-center justify-between px-4 py-2 rounded-md hover:bg-muted text-left"
+                >
+                  <span>Health Packages</span>
+                  <motion.span
+                    animate={{ rotate: showMobilePackages ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    ▼
+                  </motion.span>
+                </button>
+                <AnimatePresence>
+                  {showMobilePackages && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="pl-4 mt-2 space-y-2 overflow-hidden"
+                    >
+                      <MobileNavLink to="/all-packages" onClick={() => setIsMobileMenuOpen(false)}>
+                        All Packages
+                      </MobileNavLink>
+                      <MobileNavLink to="/health-panel-whole-body" onClick={() => setIsMobileMenuOpen(false)}>
+                        Health Panel - Whole Body
+                      </MobileNavLink>
+                      <MobileNavLink to="/preventive-health-panel-comprehensive" onClick={() => setIsMobileMenuOpen(false)}>
+                        Preventive Health Panel - Comprehensive
+                      </MobileNavLink>
+                      <MobileNavLink to="/preventive-health-panel-comprehensive-plus" onClick={() => setIsMobileMenuOpen(false)}>
+                        Preventive Health Panel - Comprehensive+
+                      </MobileNavLink>
+                      <MobileNavLink to="/routine-health-panel" onClick={() => setIsMobileMenuOpen(false)}>
+                        Routine Health Panel
+                      </MobileNavLink>
+                      <MobileNavLink to="/fever-profile-basic" onClick={() => setIsMobileMenuOpen(false)}>
+                        Fever Profile Basic
+                      </MobileNavLink>
+                      <MobileNavLink to="/fever-profile-advance" onClick={() => setIsMobileMenuOpen(false)}>
+                        Fever Profile Advance
+                      </MobileNavLink>
+                      <MobileNavLink to="/fever-panel-i" onClick={() => setIsMobileMenuOpen(false)}>
+                        Fever Panel-I
+                      </MobileNavLink>
+                      <MobileNavLink to="/extended-iron-profile" onClick={() => setIsMobileMenuOpen(false)}>
+                        Extended Iron Profile
+                      </MobileNavLink>
+                      <MobileNavLink to="/basic-iron-profile" onClick={() => setIsMobileMenuOpen(false)}>
+                        Basic Iron Profile
+                      </MobileNavLink>
+                      <MobileNavLink to="/diabetic-profile" onClick={() => setIsMobileMenuOpen(false)}>
+                        Diabetic Profile
+                      </MobileNavLink>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Blogs Dropdown for Mobile */}
+              <div>
+                <button
+                  onClick={() => setShowMobileBlogs(!showMobileBlogs)}
+                  className="w-full flex items-center justify-between px-4 py-2 rounded-md hover:bg-muted text-left"
+                >
+                  <span>Blogs</span>
+                  <motion.span
+                    animate={{ rotate: showMobileBlogs ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    ▼
+                  </motion.span>
+                </button>
+                <AnimatePresence>
+                  {showMobileBlogs && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="pl-4 mt-2 space-y-2 overflow-hidden"
+                    >
+                      <MobileNavLink to="/blog" onClick={() => setIsMobileMenuOpen(false)}>
+                        All Blogs
+                      </MobileNavLink>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <MobileNavLink to="/careers" onClick={() => setIsMobileMenuOpen(false)}>
+                Careers
+              </MobileNavLink>
+              <MobileNavLink to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                Contact
+              </MobileNavLink>
+
+              {/* Mobile CTA Button */}
+              <div className="pt-4">
+                <a
+                  href="tel:+919711127333"
+                  className="block bg-secondary text-white px-6 py-3 rounded-lg text-center font-semibold"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Book Appointment
+                </a>
+              </div>
             </nav>
           </motion.div>
         )}

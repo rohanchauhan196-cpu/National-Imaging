@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const packages = [
   {
-    name: 'Preventive Health Panel – Comprehensive',
+    name: 'Full Body Checkup',
     price: '₹1800',
     tests: 65,
     popular: true,
@@ -12,8 +12,7 @@ const packages = [
     features: [
       'Complete Hemogram',
       'Thyroid Profile',
-      'Liver Function Test',
-      'Kidney Function Test',
+      'LFT & TFT',
       'Lipid Profile',
       'Hba1c',
       'Iron Profile'

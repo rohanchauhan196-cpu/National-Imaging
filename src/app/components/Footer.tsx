@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
@@ -25,14 +25,15 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: <Facebook className="w-5 h-5" />, href: '#' },
-                { icon: <Twitter className="w-5 h-5" />, href: '#' },
-                { icon: <Instagram className="w-5 h-5" />, href: '#' },
-                { icon: <Linkedin className="w-5 h-5" />, href: '#' },
+                { icon: <Facebook className="w-5 h-5" />, href: 'https://www.facebook.com/MolecularDiagnosticsAndTherapy/' },
+                { icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/moleculardiagnosticsandtherapy/' },
+                { icon: <Twitter className="w-5 h-5" />, href: 'https://www.threads.com/@moleculardiagnosticsandtherapy' },
               ].map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -3 }}
                   whileTap={{ scale: 0.9 }}
                   className="w-10 h-10 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-200"

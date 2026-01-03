@@ -7,68 +7,12 @@ import packageImaging from '../../assets/package-imaging.png';
 
 export const packages = [
     {
-        name: 'Health Panel-Whole Body',
-        price: '₹3000',
-        popular: true,
-        image: packageLab,
-        link: '/packages/health-panel-whole-body',
-        description: 'Comprehensive whole body checkup including Lipid, Liver, Kidney, Thyroid profiles and more.'
-    },
-    {
-        name: 'Preventive Health Panel- Comprehensive',
-        price: '₹1800',
-        popular: false,
-        image: packageConsult,
-        link: '/packages/preventive-comprehensive',
-        description: 'Preventive checkup covering vital organ functions and vitamin levels.'
-    },
-    {
-        name: 'Preventive Health Panel- Comprehensive+',
-        price: '₹2200',
-        popular: true,
-        image: packageImaging,
-        link: '/packages/preventive-comprehensive-plus',
-        description: 'Advanced preventive panel with additional features for deeper insights.'
-    },
-    {
-        name: 'Routine Health panel',
-        price: '₹1400',
-        popular: false,
-        image: packageLab,
-        link: '/packages/routine-health',
-        description: 'Essential health monitoring including Lipid, Liver, Kidney tests and Blood Sugar.'
-    },
-    {
         name: 'Fever Profile Basic',
         price: '₹800',
         popular: false,
         image: packageConsult,
         link: '/packages/fever-basic',
         description: 'Basic fever screening including CBC, Malaria, Widal, and Urine analysis.'
-    },
-    {
-        name: 'Fever Profile Advance',
-        price: '₹1600',
-        popular: true,
-        image: packageImaging,
-        link: '/packages/fever-advance',
-        description: 'Advanced fever investigation with Culture, CRP, and detailed antigen tests.'
-    },
-    {
-        name: 'Fever Panel-I',
-        price: '₹1400',
-        popular: false,
-        image: packageLab,
-        link: '/packages/fever-panel-i',
-        description: 'Comprehensive fever panel with Typhoid, Dengue, and Malaria screening.'
-    },
-    {
-        name: 'EXTENDED IRON PROFILE',
-        price: '₹1850',
-        popular: false,
-        image: packageConsult,
-        link: '/packages/extended-iron-profile',
-        description: 'Complete assessment of iron status including Ferritin and Transferrin.'
     },
     {
         name: 'Basic Iron Profile',
@@ -85,6 +29,62 @@ export const packages = [
         image: packageLab,
         link: '/packages/diabetic-profile',
         description: 'Specialized profile for diabetes monitoring including HbA1c and Microalbumin.'
+    },
+    {
+        name: 'Routine Health panel',
+        price: '₹1400',
+        popular: false,
+        image: packageLab,
+        link: '/packages/routine-health',
+        description: 'Essential health monitoring including Lipid, Liver, Kidney tests and Blood Sugar.'
+    },
+    {
+        name: 'Fever Panel-I',
+        price: '₹1400',
+        popular: false,
+        image: packageLab,
+        link: '/packages/fever-panel-i',
+        description: 'Comprehensive fever panel with Typhoid, Dengue, and Malaria screening.'
+    },
+    {
+        name: 'Fever Profile Advance',
+        price: '₹1600',
+        popular: true,
+        image: packageImaging,
+        link: '/packages/fever-advance',
+        description: 'Advanced fever investigation with Culture, CRP, and detailed antigen tests.'
+    },
+    {
+        name: 'Preventive Health Panel- Comprehensive',
+        price: '₹1800',
+        popular: false,
+        image: packageConsult,
+        link: '/packages/preventive-comprehensive',
+        description: 'Preventive checkup covering vital organ functions and vitamin levels.'
+    },
+    {
+        name: 'EXTENDED IRON PROFILE',
+        price: '₹1850',
+        popular: false,
+        image: packageConsult,
+        link: '/packages/extended-iron-profile',
+        description: 'Complete assessment of iron status including Ferritin and Transferrin.'
+    },
+    {
+        name: 'Preventive Health Panel- Comprehensive+',
+        price: '₹2200',
+        popular: true,
+        image: packageImaging,
+        link: '/packages/preventive-comprehensive-plus',
+        description: 'Advanced preventive panel with additional features for deeper insights.'
+    },
+    {
+        name: 'Health Panel-Whole Body',
+        price: '₹3000',
+        popular: true,
+        image: packageLab,
+        link: '/packages/health-panel-whole-body',
+        description: 'Comprehensive whole body checkup including Lipid, Liver, Kidney, Thyroid profiles and more.'
     },
 ];
 

@@ -84,12 +84,12 @@ const ServicesPage = () => {
                                         className="bg-white rounded-xl shadow-sm border border-slate-200/50 overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300 h-full flex flex-col"
                                     >
                                         {/* Compact Image */}
-                                        <div className="relative h-40 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                                        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
                                             {service.mainImage ? (
                                                 <img
                                                     src={urlFor(service.mainImage).width(600).url()}
                                                     alt={service.title}
-                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                                                 />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center">

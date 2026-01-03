@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Topbar from './components/Topbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import HomeCollectionModal from './components/HomeCollectionModal';
 
 const TOPBAR_HEIGHT = 40;
 const HEADER_HEIGHT = 80;
@@ -39,6 +40,7 @@ const Layout = () => {
             </main>
 
             <Footer />
+            <HomeCollectionModal />
         </div>
     );
 };
