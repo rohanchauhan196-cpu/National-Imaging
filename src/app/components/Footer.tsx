@@ -55,9 +55,9 @@ const Footer = () => {
               {[
                 { name: 'Home', path: '/' },
                 { name: 'About Us', path: '/about' },
-                { name: 'Services', path: '/#services' },
-                { name: 'Health Packages', path: '#' },
-                { name: 'Blogs', path: '#' },
+                { name: 'All Services', path: '/all-services' },
+                { name: 'Health Packages', path: '/all-packages' },
+                { name: 'Blogs', path: '/blog' },
                 { name: 'Contact', path: '/contact' }
               ].map((link, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
@@ -78,6 +78,11 @@ const Footer = () => {
           >
             <h3 className="text-xl mb-4">Our Services</h3>
             <ul className="space-y-3">
+              <motion.li whileHover={{ x: 5 }}>
+                <Link to="/all-services" className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                  All Services
+                </Link>
+              </motion.li>
               {['Pathology', 'Radiology', 'Cardiology', 'Biochemistry', 'Clinical Tests', 'Home Collection'].map((service, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
                   <Link to={service === 'Radiology' ? '/services/radiology' : service === 'Pathology' ? '/services/pathology' : service === 'Cardiology' ? '/services/cardiology' : '/#services'} className="text-gray-400 hover:text-secondary transition-colors duration-200">

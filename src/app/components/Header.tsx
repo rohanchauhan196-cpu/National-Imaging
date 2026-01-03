@@ -66,7 +66,7 @@ const Header = ({ topOffset }: HeaderProps) => {
             <nav className="hidden lg:flex items-center space-x-8">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About Us</NavLink>
-              <NavLink to="/#services">Services</NavLink>
+              <NavLink to="/all-services">Services</NavLink>
 
               {/* Packages Dropdown */}
               <div
@@ -182,7 +182,7 @@ const Header = ({ topOffset }: HeaderProps) => {
               <MobileNavLink to="/about" onClick={() => setIsMobileMenuOpen(false)}>
                 About Us
               </MobileNavLink>
-              <MobileNavLink to="/#services" onClick={() => setIsMobileMenuOpen(false)}>
+              <MobileNavLink to="/all-services" onClick={() => setIsMobileMenuOpen(false)}>
                 Services
               </MobileNavLink>
             </nav>

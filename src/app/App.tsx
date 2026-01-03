@@ -21,6 +21,8 @@ import FeverPanelIPage from './pages/FeverPanelIPage';
 import ExtendedIronProfilePage from './pages/ExtendedIronProfilePage';
 import BasicIronProfilePage from './pages/BasicIronProfilePage';
 import DiabeticProfilePage from './pages/DiabeticProfilePage';
+import ServicesPage from './pages/ServicesPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 
 const App = () => {
   return (
@@ -45,6 +47,8 @@ const App = () => {
           <Route path="packages/basic-iron-profile" element={<BasicIronProfilePage />} />
           <Route path="packages/diabetic-profile" element={<DiabeticProfilePage />} />
           <Route path="all-packages" element={<AllPackagesPage />} />
+          <Route path="all-services" element={<ServicesPage />} />
+          <Route path="service/:slug" element={<ServiceDetailPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogPostPage />} />
         </Route>
