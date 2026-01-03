@@ -23,6 +23,7 @@ import BasicIronProfilePage from './pages/BasicIronProfilePage';
 import DiabeticProfilePage from './pages/DiabeticProfilePage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import CareersPage from './pages/CareersPage';
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="all-packages" element={<AllPackagesPage />} />
           <Route path="all-services" element={<ServicesPage />} />
           <Route path="service/:slug" element={<ServiceDetailPage />} />
+          <Route path="careers" element={<CareersPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogPostPage />} />
         </Route>

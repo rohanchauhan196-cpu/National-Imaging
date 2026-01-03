@@ -130,14 +130,15 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-wrap gap-4 md:gap-6 mb-12 md:mb-16"
           >
-            <motion.button
+            <motion.a
+              href="tel:+919711127333"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               className="bg-secondary text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold shadow-2xl hover:bg-secondary/90 transition-all duration-300 flex items-center gap-2"
             >
               <Calendar className="w-5 h-5" />
               Book Appointment
-            </motion.button>
+            </motion.a>
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}

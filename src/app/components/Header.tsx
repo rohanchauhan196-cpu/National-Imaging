@@ -145,13 +145,14 @@ const Header = ({ topOffset }: HeaderProps) => {
             </nav>
 
             {/* CTA */}
-            <motion.button
+            <motion.a
+              href="tel:+919711127333"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="hidden lg:block bg-secondary text-primary-foreground px-6 py-2.5 rounded-md cursor-pointer"
             >
               Book Appointment
-            </motion.button>
+            </motion.a>
 
             {/* Mobile Toggle */}
             <button

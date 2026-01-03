@@ -73,7 +73,7 @@ const FeverProfileBasicPage = () => {
                         <div className="text-4xl font-bold text-primary mb-2">₹ 800</div>
                         <div className="text-xs text-slate-400 mb-6">*Inclusive of all taxes</div>
 
-                        <Link to="/contact" className="block w-full py-3.5 bg-primary hover:bg-blue-700 text-white text-center font-bold rounded-xl transition-all shadow-lg hover:shadow-primary/30 mb-3">
+                        <Link to="tel:+919711127333" className="block w-full py-3.5 bg-primary hover:bg-blue-700 text-white text-center font-bold rounded-xl transition-all shadow-lg hover:shadow-primary/30 mb-3">
                             Book Now
                         </Link>
                         <p className="text-xs text-center text-slate-500">

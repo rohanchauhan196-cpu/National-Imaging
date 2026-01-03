@@ -13,7 +13,7 @@ const BasicIronProfilePage = () => {
                     </div>
                     <div className="bg-white p-6 rounded-3xl shadow-xl max-w-sm w-full">
                         <div className="text-4xl font-bold text-primary mb-2">₹ 1,000</div>
-                        <Link to="/contact" className="block w-full py-3 bg-primary hover:bg-blue-700 text-white text-center font-bold rounded-xl">Book Now</Link>
+                        <Link to="tel:+919711127333" className="block w-full py-3 bg-primary hover:bg-blue-700 text-white text-center font-bold rounded-xl">Book Now</Link>
                     </div>
                 </div>
             </div>
