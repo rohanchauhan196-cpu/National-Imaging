@@ -32,11 +32,12 @@ const HomeCollectionModal = () => {
                 transition={{ delay: 1, type: "spring", stiffness: 100 }}
                 whileHover={{
                     x: -10,
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(237, 50, 55, 0.4)"
+                    scale: 1.03,
+                    boxShadow: "0 18px 36px rgba(237, 50, 55, 0.35)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-gradient-to-l from-secondary via-red-600 to-secondary text-white py-6 px-4 rounded-l-2xl shadow-2xl hover:shadow-secondary/50 transition-all group overflow-hidden"
+                aria-label="Home Collection"
+                className="fixed right-4 md:right-[-3.5rem] md:hover:right-0 top-1/2 -translate-y-1/2 z-40 bg-gradient-to-l from-secondary via-red-600 to-secondary text-white w-12 h-12 md:w-14 md:h-40 md:hover:w-48 rounded-full md:rounded-l-full shadow-2xl hover:shadow-secondary/50 transition-all duration-200 md:transition-[right,width] group overflow-hidden flex items-center justify-center md:flex-col"
             >
                 {/* Animated background gradient */}
                 <motion.div
@@ -52,25 +53,26 @@ const HomeCollectionModal = () => {
                 />
 
                 {/* Icon and Text */}
-                <div className="relative z-10 flex flex-col items-center gap-2">
+                <div className="relative z-10 flex items-center justify-center md:flex-col md:items-center md:gap-2 md:py-2 md:px-1">
                     <motion.div
                         animate={{
-                            rotate: [0, -10, 10, -10, 0],
+                            rotate: [0, -8, 8, -8, 0],
                         }}
                         transition={{
                             duration: 2,
                             repeat: Infinity,
                             repeatDelay: 3
                         }}
-                        className="text-3xl"
+                        className="text-lg md:text-3xl flex items-center justify-center"
                     >
                         🏠
                     </motion.div>
-                    <div className="font-bold text-sm whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>
+                    <span className="sr-only">Home Collection</span>
+                    <div className="font-bold text-sm whitespace-nowrap hidden md:block md:opacity-0 md:translate-x-6 md:group-hover:opacity-100 md:group-hover:translate-x-0 md:transform md:transition-all md:duration-200" style={{ writingMode: 'vertical-rl' }}>
                         HOME COLLECTION
                     </div>
                     <motion.div
-                        className="w-full h-1 bg-white rounded-full mt-2"
+                        className="hidden md:block w-full h-1 bg-white rounded-full mt-2"
                         initial={{ scaleX: 0 }}
                         whileHover={{ scaleX: 1 }}
                         transition={{ duration: 0.3 }}
@@ -79,10 +81,10 @@ const HomeCollectionModal = () => {
 
                 {/* Pulse effect */}
                 <motion.div
-                    className="absolute inset-0 bg-white/30 rounded-l-2xl"
+                    className="absolute inset-0 bg-white/30 rounded-full md:rounded-l-full"
                     animate={{
-                        scale: [1, 1.1, 1],
-                        opacity: [0.3, 0, 0.3]
+                        scale: [1, 1.06, 1],
+                        opacity: [0.28, 0, 0.28]
                     }}
                     transition={{
                         duration: 2,
