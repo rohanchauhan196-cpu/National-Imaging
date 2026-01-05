@@ -1,7 +1,27 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Smartphone, QrCode } from 'lucide-react';
 
+// Store URLs
+const IOS_APP_URL = 'https://apps.apple.com/in/app/molecular-diagnostics-therapy/id6755039717';
+const ANDROID_APP_URL = 'https://play.google.com/store/apps/details?id=com.moleculardiaognestic&hl=en';
+
 const MobileAppSection = () => {
+  const [qrSrc, setQrSrc] = useState<string | null>(null);
+
+  // Generate QR code on client to avoid SSR issues. The QR encodes the absolute /app URL
+  // so scanning it on mobile will open /app and trigger the device-aware redirect there.
+  useEffect(() => {
+    try {
+      const appUrl = `${window.location.origin}/app`;
+      const qr = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(appUrl)}&choe=UTF-8`;
+      setQrSrc(qr);
+    } catch (e) {
+      // window may be undefined in some build environments — fallback to showing icon only
+      setQrSrc(null);
+    }
+  }, []);
+
   return (
     <section className="py-20 bg-primary text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -60,7 +80,9 @@ const MobileAppSection = () => {
 
             <div className="flex flex-wrap gap-4">
               <motion.a
-                href="https://apps.apple.com/in/app/molecular-diagnostics-therapy/id6755039717"
+                href={IOS_APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-3 bg-white text-primary px-6 py-3 rounded-md hover:bg-white/90 transition-all duration-200 shadow-lg"
@@ -75,7 +97,7 @@ const MobileAppSection = () => {
               </motion.a>
 
               <motion.a
-                href="https://play.google.com/store/apps/details?id=com.moleculardiaognestic&hl=en"
+                href={ANDROID_APP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -90,7 +112,7 @@ const MobileAppSection = () => {
                   <div className="text-sm">Google Play</div>
                 </div>
               </motion.a>
-            </div>
+            </div> 
           </motion.div>
 
           {/* Right Content - Phone Mockup */}
@@ -113,7 +135,15 @@ const MobileAppSection = () => {
                     <h3 className="text-2xl mb-2">Health App</h3>
                     <p className="text-center text-sm opacity-80">Your health companion</p>
                     <div className="mt-8 w-32 h-32 bg-white rounded-lg flex items-center justify-center">
-                      <QrCode className="w-24 h-24 text-primary" />
+                      {/* QR is generated at runtime to point to the site's /app redirect page. Using a runtime URL avoids hardcoding the origin during build. */}
+                      <a href="/app" target="_blank" rel="noopener noreferrer" aria-label="Open app download page">
+                        {/**
+                         * qrSrc is generated on the client using the Google Chart API to create a QR image
+                         * that encodes the absolute URL to /app. Scanning it on a mobile device will open
+                         * /app on that device and the redirect script there will send users to the correct store.
+                         */}
+                        <img src={qrSrc || ''} alt="QR code to download app" className="w-24 h-24" />
+                      </a>
                     </div>
                     <p className="text-xs mt-4 opacity-80">Scan to download</p>
                   </div>

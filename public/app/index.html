@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open App</title>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; padding:0; background:#f8fafc; color:#0f172a; }
+    .container{max-width:900px;margin:5vh auto;padding:24px;text-align:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;background:#111827;color:#fff;text-decoration:none;margin:8px;font-weight:600}
+    .btn.app{background:linear-gradient(90deg,#0ea5e9,#7c3aed)}
+    .qr{margin:18px auto}
+    .note{color:#475569;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Open App</h1>
+    <p class="note">Redirecting based on your device. If nothing happens, use the links below or scan the QR code.</p>
+
+    <div id="content" style="display:none;">
+      <div>
+        <a id="iosBtn" class="btn app" target="_blank" rel="noopener noreferrer" href="#">Open on App Store</a>
+        <a id="androidBtn" class="btn" target="_blank" rel="noopener noreferrer" href="#">Open on Google Play</a>
+      </div>
+
+      <div class="qr">
+        <a id="qrLink" href="#" target="_blank" rel="noopener noreferrer">
+          <img id="qrImg" src="" alt="QR to download app" width="200" height="200" />
+        </a>
+        <div class="note">Scan the QR code with your phone camera to open the app store.</div>
+      </div>
+    </div>
+
+    <div id="loading">Checking your device…</div>
+  </div>
+
+  <script>
+    // Store URLs
+    const IOS_URL = 'https://apps.apple.com/in/app/molecular-diagnostics-therapy/id6755039717';
+    const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.moleculardiaognestic&hl=en';
+
+    // Device detection helpers
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent || '');
+    }
+
+    function isIOS() {
+      const ua = navigator.userAgent || '';
+      // iPad on iOS 13+ can appear as MacIntel; detect with touch points as a fallback
+      return /iPhone|iPod|iPad/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+
+    // If visitor is mobile, redirect immediately to the appropriate store.
+    // Desktop users see a page with both store buttons and a QR code to scan with a phone.
+    (function run() {
+      try {
+        if (isAndroid()) {
+          // Android: go to Play Store
+          window.location.replace(ANDROID_URL);
+          return;
+        }
+        if (isIOS()) {
+          // iOS: go to App Store
+          window.location.replace(IOS_URL);
+          return;
+        }
+      } catch (e) {
+        // If detection fails, show fallback UI
+        console.error('Device detection error', e);
+      }
+
+      // Desktop fallback: show both buttons and a QR code
+      const content = document.getElementById('content');
+      const loading = document.getElementById('loading');
+      if (content && loading) {
+        loading.style.display = 'none';
+        content.style.display = 'block';
+
+        const iosBtn = document.getElementById('iosBtn');
+        const androidBtn = document.getElementById('androidBtn');
+        const qrImg = document.getElementById('qrImg');
+        const qrLink = document.getElementById('qrLink');
+
+        if (iosBtn) iosBtn.setAttribute('href', IOS_URL);
+        if (androidBtn) androidBtn.setAttribute('href', ANDROID_URL);
+
+        // Build QR image that encodes this page's absolute URL (so scanning on a phone will trigger redirects)
+        const appUrl = window.location.origin + window.location.pathname;
+        const qrSrc = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(appUrl) + '&choe=UTF-8';
+        if (qrImg) qrImg.setAttribute('src', qrSrc);
+        if (qrLink) qrLink.setAttribute('href', appUrl);
+      }
+    })();
+
+    /*
+      Notes:
+      - Redirects for Android/iOS happen immediately using window.location.replace so users land in the store.
+      - Desktop users are shown both store links and a QR code that points to this page; scanning the QR on a phone will open this same page on the device and trigger the redirect.
+      - We use a simple userAgent check. It's robust for common devices and uses an extra iPad-on-iOS-13+ fallback check.
+    */
+  </script>
+</body>
+</html>
