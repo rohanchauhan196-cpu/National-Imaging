@@ -24,6 +24,7 @@ import DiabeticProfilePage from './pages/DiabeticProfilePage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import CareersPage from './pages/CareersPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="careers" element={<CareersPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogPostPage />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

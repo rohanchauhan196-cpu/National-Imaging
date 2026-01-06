@@ -63,7 +63,7 @@ const Footer = () => {
                 { name: 'Contact', path: '/contact' }
               ].map((link, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
-                  <Link to={link.path} className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                  <Link to={link.path} className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
                     {link.name}
                   </Link>
                 </motion.li>
@@ -81,13 +81,13 @@ const Footer = () => {
             <h3 className="text-xl mb-4">Our Services</h3>
             <ul className="space-y-3">
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/all-services" className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                <Link to="/all-services" className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
                   All Services
                 </Link>
               </motion.li>
               {['Pathology', 'Radiology', 'Cardiology', 'Biochemistry', 'Clinical Tests', 'Home Collection'].map((service, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
-                  <Link to={service === 'Radiology' ? '/services/radiology' : service === 'Pathology' ? '/services/pathology' : service === 'Cardiology' ? '/services/cardiology' : '/#services'} className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                  <Link to={service === 'Radiology' ? '/services/radiology' : service === 'Pathology' ? '/services/pathology' : service === 'Cardiology' ? '/services/cardiology' : '/#services'} className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
                     {service}
                   </Link>
                 </motion.li>
@@ -105,7 +105,7 @@ const Footer = () => {
             <h3 className="text-xl mb-4">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
+                <MapPin className="w-5 h-5 text-[#E63946] flex-shrink-0 mt-1" />
                 <span className="text-gray-400">
 
                   Opposite Pillar No. 799, Plot No.1,<br></br>
@@ -114,21 +114,21 @@ const Footer = () => {
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-secondary flex-shrink-0" />
-                <a href="tel:+919711127333" className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                <Phone className="w-5 h-5 text-[#E63946] flex-shrink-0" />
+                <a href="tel:+919711127333" className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
                   +91 97111 27333
                 </a><br></br>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-secondary flex-shrink-0" />
+                <Phone className="w-5 h-5 text-[#E63946] flex-shrink-0" />
 
-                <a href="tel:+919711128333" className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                <a href="tel:+919711128333" className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
                   +91 97111 28333
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-secondary flex-shrink-0" />
-                <a href="mailto:nipathlabs@gmail.com" className="text-gray-400 hover:text-secondary transition-colors duration-200">
+                <Mail className="w-5 h-5 text-[#E63946] flex-shrink-0" />
+                <a href="mailto:nipathlabs@gmail.com" className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
                   nipathlabs@gmail.com
                 </a>
               </li>
@@ -153,30 +153,29 @@ const Footer = () => {
               <motion.a
                 href="https://www.molecularit.com/"
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-400 hover:text-secondary transition-colors duration-200"
+                className="text-gray-400 hover:text-[#E63946] transition-colors duration-200"
               >
                 Molecular Diagnostics
               </motion.a>
 
 
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.05 }}
-                className="text-gray-400 hover:text-secondary transition-colors duration-200"
+              <Link
+                to="/privacy-policy"
+                className="text-gray-400 hover:text-[#E63946] transition-colors duration-200"
               >
                 Privacy Policy
-              </motion.a>
+              </Link>
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-400 hover:text-secondary transition-colors duration-200"
+                className="text-gray-400 hover:text-[#E63946] transition-colors duration-200"
               >
                 Terms & Conditions
               </motion.a>
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-400 hover:text-secondary transition-colors duration-200"
+                className="text-gray-400 hover:text-[#E63946] transition-colors duration-200"
               >
                 Sitemap
               </motion.a>

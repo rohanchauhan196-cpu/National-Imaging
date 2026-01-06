@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
 
 const empanelments = [
-  { name: 'CGHS', logo: 'https://placehold.co/200x80?text=CGHS' },
-  { name: 'Air India', logo: 'https://placehold.co/200x80?text=Air+India' },
-  { name: 'ESI', logo: 'https://placehold.co/200x80?text=ESI' },
-  { name: 'DGEHS', logo: 'https://placehold.co/200x80?text=DGEHS' },
-  { name: 'CAPF', logo: 'https://placehold.co/200x80?text=CAPF' },
+  { name: 'CGHS', logo: 'src/assets/dgehs.jpg' },
+  { name: 'Air India', logo: 'src/assets/airindia.jpg' },
+  { name: 'ESI', logo: 'src/assets/esi.png' },
+  { name: 'DGEHS', logo: 'src/assets/DGEHS.png' },
+  { name: 'CAPF', logo: 'src/assets/capf_logo_.png' },
 ];
 
 const Empanelments = () => {

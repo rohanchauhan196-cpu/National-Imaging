@@ -174,6 +174,7 @@ const Topbar = ({ isVisible }: { isVisible: boolean }) => {
           {/* Right - Login */}
           <div className="flex items-center ml-auto">
             <motion.button
+              onClick={() => navigate('https://www.molecularit.com/login')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-1.5 px-3 py-1 bg-primary text-primary-foreground rounded-md transition-colors hover:bg-primary/90"

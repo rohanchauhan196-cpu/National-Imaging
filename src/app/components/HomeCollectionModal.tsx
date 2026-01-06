@@ -26,17 +26,34 @@ const HomeCollectionModal = () => {
         <>
             {/* Floating Button - Fixed to right edge */}
             {/* Fixed Bottom Left Button */}
+            {/* Vertical Side Button - Like Emergency Tab */}
             <motion.button
                 onClick={() => setIsOpen(true)}
-                initial={{ x: -100, opacity: 0 }}
+                initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                drag
-                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="fixed left-6 bottom-6 z-50 bg-secondary text-white font-bold py-3 px-6 rounded-full shadow-2xl hover:shadow-secondary/50 transition-all duration-200 flex items-center gap-2"
+                whileHover={{ x: 5 }}
+                className="fixed left-0 top-1/2 -translate-y-1/2 z-50 bg-[#b02a30] text-white py-4 px-1.5 rounded-r-lg shadow-lg flex flex-col items-center gap-1 font-bold text-[10px] md:text-xs leading-none tracking-widest border-2 border-l-0 border-white/20"
             >
-                Book Home Collection
+                <span className="block">B</span>
+                <span className="block">O</span>
+                <span className="block">O</span>
+                <span className="block">K</span>
+                <span className="block h-2"></span>
+                <span className="block">H</span>
+                <span className="block">O</span>
+                <span className="block">M</span>
+                <span className="block">E</span>
+                <span className="block h-2"></span>
+                <span className="block">C</span>
+                <span className="block">O</span>
+                <span className="block">L</span>
+                <span className="block">L</span>
+                <span className="block">E</span>
+                <span className="block">C</span>
+                <span className="block">T</span>
+                <span className="block">I</span>
+                <span className="block">O</span>
+                <span className="block">N</span>
             </motion.button>
 
             {/* Modal */}
