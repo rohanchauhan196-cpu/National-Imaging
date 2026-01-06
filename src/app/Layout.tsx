@@ -4,6 +4,7 @@ import Topbar from './components/Topbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomeCollectionModal from './components/HomeCollectionModal';
+import BackToTopButton from './components/BackToTopButton';
 
 const TOPBAR_HEIGHT = 40;
 const HEADER_HEIGHT = 80;
@@ -41,6 +42,7 @@ const Layout = () => {
 
             <Footer />
             <HomeCollectionModal />
+            <BackToTopButton />
         </div>
     );
 };

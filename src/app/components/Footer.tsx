@@ -85,10 +85,16 @@ const Footer = () => {
                   All Services
                 </Link>
               </motion.li>
-              {['Pathology', 'Radiology', 'Cardiology', 'Biochemistry', 'Clinical Tests', 'Home Collection'].map((service, index) => (
+              {[
+                { name: 'Pathology', link: '/services/pathology' },
+                { name: 'Radiology', link: '/services/radiology' },
+                { name: 'Cardiology', link: '/services/cardiology' },
+                { name: 'Biochemistry', link: '/services/pathology' },
+                { name: 'Home Collection', link: '/contact' }
+              ].map((service, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
-                  <Link to={service === 'Radiology' ? '/services/radiology' : service === 'Pathology' ? '/services/pathology' : service === 'Cardiology' ? '/services/cardiology' : '/#services'} className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
-                    {service}
+                  <Link to={service.link} className="text-gray-400 hover:text-[#E63946] transition-colors duration-200">
+                    {service.name}
                   </Link>
                 </motion.li>
               ))}
@@ -165,13 +171,12 @@ const Footer = () => {
               >
                 Privacy Policy
               </Link>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.05 }}
+              <Link
+                to="/refund-policy"
                 className="text-gray-400 hover:text-[#E63946] transition-colors duration-200"
               >
-                Terms & Conditions
-              </motion.a>
+                Refund Policy
+              </Link>
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.05 }}

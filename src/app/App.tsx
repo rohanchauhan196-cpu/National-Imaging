@@ -25,6 +25,7 @@ import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import CareersPage from './pages/CareersPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import RefundPolicyPage from './pages/RefundPolicyPage';
 
 const App = () => {
   return (
@@ -55,6 +56,7 @@ const App = () => {
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogPostPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="refund-policy" element={<RefundPolicyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
