@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, X, Sparkles, Search } from 'lucide-react';
 import { sanityClient } from '../../sanityClient';
@@ -17,6 +17,7 @@ interface ServiceDetail {
 
 const ServiceDetailPage = () => {
     const { slug } = useParams();
+    const [searchParams] = useSearchParams();
     const [service, setService] = useState<ServiceDetail | null>(null);
     const [loading, setLoading] = useState(true);
     const [selectedTest, setSelectedTest] = useState<TestItem | null>(null);
@@ -35,12 +36,21 @@ const ServiceDetailPage = () => {
             .then((data) => {
                 setService(data);
                 setLoading(false);
+
+                // key logic: Check for query param after data is loaded
+                const testNameParam = searchParams.get('test');
+                if (testNameParam && data?.tests) {
+                    const foundTest = data.tests.find((t: TestItem) => t.name === testNameParam);
+                    if (foundTest) {
+                        setSelectedTest(foundTest);
+                    }
+                }
             })
             .catch((error) => {
                 console.error("Error fetching service details:", error);
                 setLoading(false);
             });
-    }, [slug]);
+    }, [slug, searchParams]);
 
     if (loading) return <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"><div className="text-slate-500 text-lg">Loading...</div></div>;
     if (!service) return <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"><div className="text-slate-500 text-lg">Service not found.</div></div>;

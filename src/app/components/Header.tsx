@@ -66,7 +66,7 @@ const Header = ({ topOffset }: HeaderProps) => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/">  </NavLink>
               <NavLink to="/about">About Us</NavLink>
               <NavLink to="/all-services">Services</NavLink>
 

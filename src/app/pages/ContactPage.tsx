@@ -68,8 +68,8 @@ const ContactPage = () => {
                                             <a href="tel:+919711127333" className="text-muted-foreground hover:text-primary transition-colors">
                                                 +91 97111 27333
                                             </a>
-                                            <a href="tel:+919711128333" className="text-muted-foreground hover:text-primary transition-colors">
-                                                +91 97111 28333
+                                            <a href="tel:+919217244110" className="text-muted-foreground hover:text-primary transition-colors">
+                                                +91 92172 44110
                                             </a>
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@ const ContactPage = () => {
                             className="h-[600px] rounded-2xl overflow-hidden shadow-lg border border-border"
                         >
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.949755073173!2d77.0308!3d28.6119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d05dd375e5a13%3A0x1e36c535d51f6764!2sDwarka%20More!5e0!3m2!1sen!2sin!4v1709123456789!5m2!1sen!2sin"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.347832638116!2d77.0277181!3d28.6193355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d05253923be1d%3A0x4bbf9dacb73e87c9!2sNational%20Imaging%20and%20Path%20Labs!5e0!3m2!1sen!2sin!4v1767690608312!5m2!1sen!2sin"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}

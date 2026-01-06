@@ -7,6 +7,8 @@ import Empanelments from '../components/Empanelments';
 import LatestBlogs from '../components/LatestBlogs';
 import MobileAppSection from '../components/MobileAppSection';
 
+import GoogleReviews from '../components/GoogleReviews';
+
 const HomePage = () => {
     return (
         <>
@@ -16,6 +18,7 @@ const HomePage = () => {
             <TopPackages />
             <TestimonialsSection />
             <Empanelments />
+            <GoogleReviews />
             <LatestBlogs />
             <MobileAppSection />
         </>

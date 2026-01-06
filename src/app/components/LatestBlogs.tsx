@@ -1,31 +1,48 @@
 import { motion } from 'motion/react';
 import { Calendar, ArrowRight } from 'lucide-react';
+import { sanityClient, urlFor } from '../../sanityClient';
+import { useEffect, useState } from 'react';
 
-const blogs = [
-  {
-    title: '10 Essential Health Tests Everyone Should Get',
-    excerpt: 'Learn about the most important health screenings that can help detect problems early and maintain your wellbeing.',
-    date: 'Dec 28, 2025',
-    category: 'Health Tips',
-    image: '🩺',
-  },
-  {
-    title: 'Understanding Your Blood Test Results',
-    excerpt: 'A comprehensive guide to interpreting your blood test reports and what different values mean for your health.',
-    date: 'Dec 25, 2025',
-    category: 'Medical Guide',
-    image: '🔬',
-  },
-  {
-    title: 'Latest Advances in Diagnostic Technology',
-    excerpt: 'Discover how modern diagnostic equipment is revolutionizing healthcare and improving accuracy in disease detection.',
-    date: 'Dec 22, 2025',
-    category: 'Technology',
-    image: '💉',
-  },
-];
+interface BlogPost {
+  title: string;
+  slug: { current: string };
+  publishedAt: string;
+  mainImage: any;
+  categories: { title: string }[];
+  body: any[];
+}
 
 const LatestBlogs = () => {
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
+          title,
+          slug,
+          publishedAt,
+          mainImage,
+          "categories": categories[]->{title},
+          body
+        }`;
+        const data = await sanityClient.fetch(query);
+        setBlogs(data);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) {
+    return <div className="py-20 text-center">Loading blogs...</div>;
+  }
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -63,23 +80,32 @@ const LatestBlogs = () => {
               whileHover={{ y: -10 }}
               className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-border group"
             >
-              <div className="bg-primary/10 h-48 flex items-center justify-center text-6xl">
-                {blog.image}
+              <div className="bg-muted aspect-video overflow-hidden relative">
+                {blog.mainImage && (
+                  <img
+                    src={urlFor(blog.mainImage).width(800).url()}
+                    alt={blog.title}
+                    className="w-full h-full object-contain bg-white transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-3 text-sm text-muted-foreground">
                   <span className="bg-primary/10 text-primary px-3 py-1 rounded-md">
-                    {blog.category}
+                    {blog.categories?.[0]?.title || 'Health'}
                   </span>
                   <span className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
-                    {blog.date}
+                    {new Date(blog.publishedAt).toLocaleDateString()}
                   </span>
                 </div>
-                <h3 className="text-xl mb-3">{blog.title}</h3>
-                <p className="text-muted-foreground mb-4">{blog.excerpt}</p>
+                <h3 className="text-xl mb-3 font-semibold line-clamp-2">{blog.title}</h3>
+                <p className="text-muted-foreground mb-4 line-clamp-3">
+                  {/* Simplified excerpt logic - normally we'd parse Portable Text */}
+                  Read more to learn about {blog.title}...
+                </p>
                 <motion.a
-                  href="#"
+                  href={`/blog/${blog.slug.current}`}
                   whileHover={{ x: 5 }}
                   className="text-primary inline-flex items-center gap-2 group-hover:gap-3 transition-all"
                 >

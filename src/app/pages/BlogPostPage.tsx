@@ -66,7 +66,8 @@ const BlogPostPage = () => {
             {/* Reading Progress Bar Removed */}
 
             {/* Immersive Hero Section */}
-            <div className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">
+            {/* Immersive Hero Section */}
+            <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
                 {post.mainImage && (
                     <img
                         src={urlFor(post.mainImage).width(1200).url()}

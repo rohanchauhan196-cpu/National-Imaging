@@ -1,14 +1,11 @@
 import { motion } from 'motion/react';
 
 const empanelments = [
-  { name: 'CGHS', logo: '🏥' },
-  { name: 'ECHS', logo: '⚕️' },
-  { name: 'Railway', logo: '🚂' },
-  { name: 'ESI', logo: '🏢' },
-  { name: 'BSES', logo: '⚡' },
-  { name: 'Delhi Govt', logo: '🏛️' },
-  { name: 'NDMC', logo: '🏙️' },
-  { name: 'DMRC', logo: '🚇' },
+  { name: 'CGHS', logo: 'https://placehold.co/200x80?text=CGHS' },
+  { name: 'Air India', logo: 'https://placehold.co/200x80?text=Air+India' },
+  { name: 'ESI', logo: 'https://placehold.co/200x80?text=ESI' },
+  { name: 'DGEHS', logo: 'https://placehold.co/200x80?text=DGEHS' },
+  { name: 'CAPF', logo: 'https://placehold.co/200x80?text=CAPF' },
 ];
 
 const Empanelments = () => {
@@ -38,7 +35,7 @@ const Empanelments = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+        <div className="flex flex-wrap justify-center gap-8">
           {empanelments.map((emp, index) => (
             <motion.div
               key={index}
@@ -47,10 +44,14 @@ const Empanelments = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10, scale: 1.05 }}
-              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center text-center border border-border"
+              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center text-center border border-border w-40 h-40"
             >
-              <div className="text-4xl mb-2">{emp.logo}</div>
-              <p className="text-sm">{emp.name}</p>
+              <img
+                src={emp.logo}
+                alt={`${emp.name} logo`}
+                className="w-full h-auto object-contain mb-2 mix-blend-multiply"
+              />
+              <p className="text-sm font-medium">{emp.name}</p>
             </motion.div>
           ))}
         </div>

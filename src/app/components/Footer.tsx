@@ -105,23 +105,29 @@ const Footer = () => {
             <h3 className="text-xl mb-4">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                <MapPin className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
                 <span className="text-gray-400">
-                  Dwarka Mod<br />
-                  New Delhi - 110075
+
+                  Opposite Pillar No. 799, Plot No.1,<br></br>
+                  Near Dwarka More, Sainik Nagar,<br></br>
+                  Vipin Garden, Kakrola, New Delhi – 110059
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <Phone className="w-5 h-5 text-secondary flex-shrink-0" />
                 <a href="tel:+919711127333" className="text-gray-400 hover:text-secondary transition-colors duration-200">
                   +91 97111 27333
-                </a>
+                </a><br></br>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-secondary flex-shrink-0" />
+
                 <a href="tel:+919711128333" className="text-gray-400 hover:text-secondary transition-colors duration-200">
                   +91 97111 28333
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                <Mail className="w-5 h-5 text-secondary flex-shrink-0" />
                 <a href="mailto:nipathlabs@gmail.com" className="text-gray-400 hover:text-secondary transition-colors duration-200">
                   nipathlabs@gmail.com
                 </a>
@@ -143,6 +149,16 @@ const Footer = () => {
               © {currentYear} National Imaging and Path Labs - Dwarka. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
+
+              <motion.a
+                href="https://www.molecularit.com/"
+                whileHover={{ scale: 1.05 }}
+                className="text-gray-400 hover:text-secondary transition-colors duration-200"
+              >
+                Molecular Diagnostics
+              </motion.a>
+
+
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.05 }}

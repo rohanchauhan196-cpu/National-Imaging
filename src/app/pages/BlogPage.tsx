@@ -79,12 +79,12 @@ const BlogPage = () => {
                                 className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-shadow group flex flex-col h-full"
                             >
                                 {/* Image */}
-                                <Link to={`/blog/${post.slug.current}`} className="block relative h-48 overflow-hidden">
+                                <Link to={`/blog/${post.slug.current}`} className="block relative aspect-video overflow-hidden">
                                     {post.mainImage && (
                                         <img
                                             src={urlFor(post.mainImage).width(800).url()}
                                             alt={post.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            className="w-full h-full object-contain bg-white transition-transform duration-500 group-hover:scale-105"
                                         />
                                     )}
                                     {post.categories && post.categories[0] && (

@@ -25,72 +25,18 @@ const HomeCollectionModal = () => {
     return (
         <>
             {/* Floating Button - Fixed to right edge */}
+            {/* Fixed Bottom Left Button */}
             <motion.button
                 onClick={() => setIsOpen(true)}
-                initial={{ x: 100, opacity: 0 }}
+                initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 1, type: "spring", stiffness: 100 }}
-                whileHover={{
-                    x: -10,
-                    scale: 1.03,
-                    boxShadow: "0 18px 36px rgba(237, 50, 55, 0.35)"
-                }}
+                drag
+                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                aria-label="Home Collection"
-                className="fixed right-4 md:right-[-3.5rem] md:hover:right-0 top-1/2 -translate-y-1/2 z-40 bg-gradient-to-l from-secondary via-red-600 to-secondary text-white w-12 h-12 md:w-14 md:h-40 md:hover:w-48 rounded-full md:rounded-l-full shadow-2xl hover:shadow-secondary/50 transition-all duration-200 md:transition-[right,width] group overflow-hidden flex items-center justify-center md:flex-col"
+                className="fixed left-6 bottom-6 z-50 bg-secondary text-white font-bold py-3 px-6 rounded-full shadow-2xl hover:shadow-secondary/50 transition-all duration-200 flex items-center gap-2"
             >
-                {/* Animated background gradient */}
-                <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{
-                        x: ['-100%', '100%']
-                    }}
-                    transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatDelay: 1
-                    }}
-                />
-
-                {/* Icon and Text */}
-                <div className="relative z-10 flex items-center justify-center md:flex-col md:items-center md:gap-2 md:py-2 md:px-1">
-                    <motion.div
-                        animate={{
-                            rotate: [0, -8, 8, -8, 0],
-                        }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatDelay: 3
-                        }}
-                        className="text-lg md:text-3xl flex items-center justify-center"
-                    >
-                        🏠
-                    </motion.div>
-                    <span className="sr-only">Home Collection</span>
-                    <div className="font-bold text-sm whitespace-nowrap hidden md:block md:opacity-0 md:translate-x-6 md:group-hover:opacity-100 md:group-hover:translate-x-0 md:transform md:transition-all md:duration-200" style={{ writingMode: 'vertical-rl' }}>
-                        HOME COLLECTION
-                    </div>
-                    <motion.div
-                        className="hidden md:block w-full h-1 bg-white rounded-full mt-2"
-                        initial={{ scaleX: 0 }}
-                        whileHover={{ scaleX: 1 }}
-                        transition={{ duration: 0.3 }}
-                    />
-                </div>
-
-                {/* Pulse effect */}
-                <motion.div
-                    className="absolute inset-0 bg-white/30 rounded-full md:rounded-l-full"
-                    animate={{
-                        scale: [1, 1.06, 1],
-                        opacity: [0.28, 0, 0.28]
-                    }}
-                    transition={{
-                        duration: 2,
-                        repeat: Infinity
-                    }}
-                />
+                Book Home Collection
             </motion.button>
 
             {/* Modal */}
