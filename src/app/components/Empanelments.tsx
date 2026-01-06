@@ -1,11 +1,16 @@
 import { motion } from 'motion/react';
+import dgehsLogo from '../../assets/dgehs.jpg'; // Note: check extension if .jpg or .png from file list
+import dgehsLogoMain from '../../assets/DGEHS.png';
+import airIndiaLogo from '../../assets/airindia.jpg';
+import esiLogo from '../../assets/esi.png';
+import capfLogo from '../../assets/capf_logo_.png';
 
 const empanelments = [
-  { name: 'CGHS', logo: 'src/assets/dgehs.jpg' },
-  { name: 'Air India', logo: 'src/assets/airindia.jpg' },
-  { name: 'ESI', logo: 'src/assets/esi.png' },
-  { name: 'DGEHS', logo: 'src/assets/DGEHS.png' },
-  { name: 'CAPF', logo: 'src/assets/capf_logo_.png' },
+  { name: 'CGHS', logo: dgehsLogo },
+  { name: 'Air India', logo: airIndiaLogo },
+  { name: 'ESI', logo: esiLogo },
+  { name: 'DGEHS', logo: dgehsLogoMain },
+  { name: 'CAPF', logo: capfLogo },
 ];
 
 const Empanelments = () => {
