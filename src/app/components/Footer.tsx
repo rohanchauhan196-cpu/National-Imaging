@@ -161,7 +161,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.05 }}
                 className="text-gray-400 hover:text-[#E63946] transition-colors duration-200"
               >
-                Molecular Diagnostics
+                Molecular Diagnostics And Therapy
               </motion.a>
 
 
