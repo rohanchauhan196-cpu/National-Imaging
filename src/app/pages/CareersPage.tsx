@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Briefcase, MapPin, Clock, X, Upload, FileText, ChevronDown, Send, Mail } from 'lucide-react';
+import { PortableText } from '@portabletext/react';
 import { sanityClient } from '../../sanityClient';
 import SEO from '../components/SEO';
 import { useSanitySEO } from '../hooks/useSanitySEO';
@@ -10,10 +11,12 @@ interface JobPosting {
     department: string;
     location: string;
     type: string;
-    description: string;
-    requirements: string[];
+    description: any; // Changed from string to any to support Portable Text
+    requirements: string[]; // Keep as string[] if user didn't change this in Sanity schema, or verify if this also needs change. Assuming only description changed for now.
     postedDate: string;
 }
+
+
 
 const CareersPage = () => {
     const { seo } = useSanitySEO('page', 'careers');
@@ -159,8 +162,8 @@ const CareersPage = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden ${expandedIndex === index
-                                        ? 'border-primary/50 shadow-md ring-1 ring-primary/10'
-                                        : 'border-slate-200 shadow-sm hover:border-primary/30'
+                                    ? 'border-primary/50 shadow-md ring-1 ring-primary/10'
+                                    : 'border-slate-200 shadow-sm hover:border-primary/30'
                                     }`}
                             >
                                 {/* Header / Trigger */}
@@ -214,9 +217,13 @@ const CareersPage = () => {
                                                             <h5 className="font-semibold text-slate-900 mb-2 flex items-center gap-2">
                                                                 About the Role
                                                             </h5>
-                                                            <p className="text-slate-600 leading-relaxed text-sm">
-                                                                {job.description}
-                                                            </p>
+                                                            <div className="text-slate-600 leading-relaxed text-sm prose prose-sm prose-slate max-w-none">
+                                                                {Array.isArray(job.description) ? (
+                                                                    <PortableText value={job.description} />
+                                                                ) : (
+                                                                    <p>{String(job.description)}</p>
+                                                                )}
+                                                            </div>
                                                         </div>
                                                         {job.requirements && job.requirements.length > 0 && (
                                                             <div>
