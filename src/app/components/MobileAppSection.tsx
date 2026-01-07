@@ -117,7 +117,7 @@ const MobileAppSection = () => {
                   <div className="text-sm">Google Play</div>
                 </div>
               </motion.a>
-            </div> 
+            </div>
           </motion.div>
 
           {/* Right Content - Phone Mockup */}
@@ -137,8 +137,8 @@ const MobileAppSection = () => {
                 <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
                   <div className="bg-primary h-full flex flex-col items-center justify-center text-white p-6">
                     <Smartphone className="w-24 h-24 mb-4" />
-                    <h3 className="text-2xl mb-2">Health App</h3>
-                    <p className="text-center text-sm opacity-80">Your health companion</p>
+                    <h3 className="text-2xl mb-2 text-center">Molecular Diagnostics And Therapy</h3>
+                    <p className="text-center text-center text-sm opacity-80">Your health companion</p>
                     <div className="mt-8 w-32 h-32 bg-white rounded-lg flex items-center justify-center">
                       {/* QR is generated at runtime to point to the site's /app redirect page. Using a runtime URL avoids hardcoding the origin during build. */}
                       <a href="/app" target="_blank" rel="noopener noreferrer" aria-label="Open app download page">
