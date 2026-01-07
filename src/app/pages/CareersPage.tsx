@@ -228,10 +228,9 @@ const CareersPage = () => {
                                                         {job.requirements && job.requirements.length > 0 && (
                                                             <div>
                                                                 <h5 className="font-semibold text-slate-900 mb-2">Requirements</h5>
-                                                                <ul className="space-y-2">
+                                                                <ul className="space-y-2 list-disc list-inside marker:text-primary">
                                                                     {job.requirements.map((req, idx) => (
-                                                                        <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
-                                                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                                                                        <li key={idx} className="text-sm text-slate-600">
                                                                             {req}
                                                                         </li>
                                                                     ))}
