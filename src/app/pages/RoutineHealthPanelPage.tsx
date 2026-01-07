@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { FlaskConical, Clock, ShieldCheck, AlertCircle, Calendar, User, HeartPulse } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const RoutineHealthPanelPage = () => {
     const faqs = [
@@ -35,6 +36,11 @@ const RoutineHealthPanelPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title="Routine Health Panel"
+                description="Book Routine Health Panel to monitor Kidney, Liver, Heart, and Thyroid health. Accurate diagnostics at National Imaging and Path Labs."
+                keywords="routine health checkup, basic health panel, preventive health test, dwarka lab"
+            />
             {/* Hero Section */}
             <div className="relative bg-primary py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

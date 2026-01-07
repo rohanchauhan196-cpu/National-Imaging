@@ -1,9 +1,12 @@
 import { motion } from 'motion/react';
-import { TrendingUp, ArrowRight } from 'lucide-react';
+import { CheckCircle2, FlaskConical, Activity, ArrowRight, ShieldCheck, Clock, Search, TrendingUp } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import packageLab from '../../assets/package-lab.png';
 import packageConsult from '../../assets/package-consult.png';
 import packageImaging from '../../assets/package-imaging.png';
+import SEO from '../components/SEO';
+import { useSanitySEO } from '../hooks/useSanitySEO';
 
 export const packages = [
     {
@@ -89,8 +92,16 @@ export const packages = [
 ];
 
 const AllPackagesPage = () => {
+    const { seo } = useSanitySEO('page', 'packages');
+
     return (
         <div className="pt-20 bg-slate-50 min-h-screen">
+            <SEO
+                title={seo?.title || "All Health Packages | Full Body Checkups @ Best Prices"}
+                description={seo?.description || "Browse our affordable and comprehensive health checkup packages. Fever profiles, diabetes monitoring, whole body checkups, and more."}
+                keywords={seo?.keywords?.join(', ') || "health packages, full body checkup, fever test price, diabetes package, preventive health checkup"}
+                image={seo?.image}
+            />
             {/* Hero Section */}
             <section className="bg-primary/5 py-16">
                 <div className="container mx-auto px-4 text-center">

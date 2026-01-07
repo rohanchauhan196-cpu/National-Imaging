@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { FlaskConical, Clock, ShieldCheck, AlertCircle, Thermometer, User, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const FeverProfileBasicPage = () => {
     const faqs = [
@@ -43,6 +44,11 @@ const FeverProfileBasicPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title="Fever Profile Basic"
+                description="Get tested for Malaria, Typhoid, and other infections with Fever Profile Basic. Fast reports available at National Imaging and Path Labs."
+                keywords="fever test, malaria test, typhoid test, fever profile price, infection screening"
+            />
             {/* Hero Section */}
             <div className="relative bg-primary py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

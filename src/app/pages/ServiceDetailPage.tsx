@@ -3,6 +3,7 @@ import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, X, Sparkles, Search } from 'lucide-react';
 import { sanityClient } from '../../sanityClient';
+import SEO from '../components/SEO';
 
 interface TestItem {
     name: string;
@@ -13,6 +14,12 @@ interface TestItem {
 interface ServiceDetail {
     title: string;
     tests: TestItem[];
+    seo?: {
+        title: string;
+        description: string;
+        keywords: string[];
+        image: any;
+    };
 }
 
 const ServiceDetailPage = () => {
@@ -29,7 +36,8 @@ const ServiceDetailPage = () => {
         sanityClient.fetch(
             `*[_type == "service" && slug.current == $slug][0]{
                 title,
-                tests
+                tests,
+                seo
             }`,
             { slug }
         )
@@ -55,8 +63,15 @@ const ServiceDetailPage = () => {
     if (loading) return <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"><div className="text-slate-500 text-lg">Loading...</div></div>;
     if (!service) return <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"><div className="text-slate-500 text-lg">Service not found.</div></div>;
 
+    const seoKeywords = service.seo?.keywords ? service.seo.keywords.join(', ') : `${service.title}, diagnostic tests, dwarka lab`;
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 pt-20">
+            <SEO
+                title={service.seo?.title || service.title}
+                description={service.seo?.description || `Comprehensive ${service.title} services at National Imaging and Path Labs.`}
+                keywords={seoKeywords}
+            />
             {/* Minimal Header */}
             <div className="bg-white/80 backdrop-blur-sm border-b border-slate-200/50 sticky top-20 z-10">
                 <div className="container mx-auto px-4 py-6">

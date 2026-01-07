@@ -2,10 +2,16 @@ import { motion } from 'motion/react';
 import { Microscope, CheckCircle2, FlaskConical, Clock, ShieldCheck, Home, Activity, FileText, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 import aboutImg from '../../assets/about1.jpeg';
+import SEO from '../components/SEO';
 
 const PathologyServicesPage = () => {
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
+            <SEO
+                title="Pathology Services"
+                description="Advanced Pathology Lab in Dwarka. Accurate Blood Tests, Urine Tests, Vitamin Profiles, and Home Collection available."
+                keywords="pathology lab dwarka, blood test home collection, diagnostic center delhi, urine test, full body checkup"
+            />
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
                 {/* Background Image with Parallax-like fixed attachment */}

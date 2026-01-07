@@ -2,10 +2,16 @@ import { motion } from 'motion/react';
 import { Heart, Activity, Stethoscope, Clock, ShieldCheck, CheckCircle2, ChevronDown, ChevronUp, FileText, Pulse } from 'lucide-react';
 import { useState } from 'react';
 import aboutImg from '../../assets/about1.jpeg';
+import SEO from '../components/SEO';
 
 const CardiologyServicesPage = () => {
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
+            <SEO
+                title="Cardiology Services"
+                description="Expert Cardiology services in Dwarka including ECG, 2D Echo, TMT, and Holter Monitoring. Trusted heart care."
+                keywords="cardiologist dwarka, ecg test, 2d echo test, tmt test, heart specialist delhi"
+            />
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
                 <div

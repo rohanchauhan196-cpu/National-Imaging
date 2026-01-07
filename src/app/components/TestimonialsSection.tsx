@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ElfsightWidget } from 'react-elfsight-widget';
 
 const TestimonialsSection = () => {

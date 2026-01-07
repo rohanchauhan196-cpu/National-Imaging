@@ -2,8 +2,11 @@ import { motion } from 'motion/react';
 import { CheckCircle2, FlaskConical, Clock, ShieldCheck, AlertCircle, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
+import { useSanitySEO } from '../hooks/useSanitySEO';
 
 const HealthPanelWholeBodyPage = () => {
+    const { seo } = useSanitySEO('page', 'health-panel-whole-body');
     // FAQ Data
     const faqs = [
         {
@@ -33,7 +36,12 @@ const HealthPanelWholeBodyPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
-
+            <SEO
+                title={seo?.title || "Health Panel Whole Body"}
+                description={seo?.description || "Complete whole body checkup at National Imaging and Path Labs. Includes Lipid, Liver, Kidney, Thyroid profiles, and more."}
+                keywords={seo?.keywords?.join(', ') || "whole body checkup, full body test, health package dwarka, preventive health checkup"}
+                image={seo?.image}
+            />
             {/* Hero Section */}
             <div className="relative bg-primary py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

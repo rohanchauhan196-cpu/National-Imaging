@@ -2,10 +2,16 @@ import { motion } from 'motion/react';
 import { Scan, CheckCircle2, ShieldCheck, Home, Activity, FileText, ChevronDown, ChevronUp, Radiation, Bone, Brain } from 'lucide-react';
 import { useState } from 'react';
 import aboutImg from '../../assets/about1.jpeg';
+import SEO from '../components/SEO';
 
 const RadiologyServicesPage = () => {
     return (
         <div className="bg-slate-50 min-h-screen font-sans">
+            <SEO
+                title="Radiology Services"
+                description="Best Radiology Center in Dwarka offering Digital X-Ray, Ultrasound, CT Scan, MRI, and Mammography. High precision imaging."
+                keywords="radiology center dwarka, x-ray dwarka, ultrasound near me, mri scan delhi, ct scan price"
+            />
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
                 {/* Background Image with Parallax-like fixed attachment */}

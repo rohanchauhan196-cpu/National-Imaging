@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, User, Clock, Share2, Twitter, Facebook, Linkedin, 
 import { useEffect, useState } from 'react';
 import { sanityClient, urlFor } from '../../sanityClient';
 import { PortableText } from '@portabletext/react';
+import SEO from '../components/SEO';
 
 const BlogPostPage = () => {
     const { id } = useParams(); // 'id' corresponds to 'slug' in our route
@@ -22,7 +23,8 @@ const BlogPostPage = () => {
             body,
             excerpt,
             "author": author->{name, image, bio},
-            "categories": categories[]->title
+            "categories": categories[]->title,
+            seo
         }`;
 
         const recentQuery = `*[_type == "post" && slug.current != $slug][0..4]{
@@ -61,8 +63,16 @@ const BlogPostPage = () => {
         )
     }
 
+    const seoKeywords = post.seo?.keywords ? post.seo.keywords.join(', ') : post.categories?.join(', ');
+
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title={post.seo?.title || post.title}
+                description={post.seo?.description || post.excerpt || "Read this article at National Imaging and Path Labs."}
+                keywords={seoKeywords}
+                image={post.mainImage ? urlFor(post.mainImage).width(1200).url() : undefined}
+            />
             {/* Reading Progress Bar Removed */}
 
             {/* Immersive Hero Section */}

@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { FlaskConical, Clock, ShieldCheck, AlertCircle, Calendar, User, HeartPulse } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const PreventiveHealthPanelComprehensivePlusPage = () => {
     const faqs = [
@@ -43,6 +44,11 @@ const PreventiveHealthPanelComprehensivePlusPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title="Preventive Health Panel Comprehensive +"
+                description="Our most advanced health checkup including Vitamin B12 and Vitamin D. Complete full body analysis for total peace of mind."
+                keywords="full body checkup with vitamins, vitamin d test, b12 test, comprehensive plus health package"
+            />
             {/* Hero Section */}
             <div className="relative bg-primary py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

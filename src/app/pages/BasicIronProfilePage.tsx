@@ -1,10 +1,16 @@
 import { motion } from 'motion/react';
 import { FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const BasicIronProfilePage = () => {
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title="Basic Iron Profile"
+                description="Book Basic Iron Profile test at National Imaging Path Labs. Includes Serum Iron, TIBC, and more for anemia screening."
+                keywords="iron test, anemia checkup, serum iron test, tibc test, diagnostic lab delhi"
+            />
             <div className="relative bg-primary py-20">
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="text-white max-w-2xl">

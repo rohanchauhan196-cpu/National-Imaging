@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { sanityClient, urlFor } from '../../sanityClient';
+import SEO from '../components/SEO';
 
 // Type for Sanity Data
 interface BlogPost {
@@ -42,6 +43,11 @@ const BlogPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20">
+            <SEO
+                title="Health Blog"
+                description="Read the latest health insights, medical news, and wellness tips from our experts at National Imaging and Path Labs."
+                keywords="health blog, medical articles, wellness tips, disease prevention info"
+            />
 
             {/* Hero Section */}
             <section className="bg-primary py-20 text-center text-white relative overflow-hidden">

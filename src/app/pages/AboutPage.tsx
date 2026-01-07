@@ -2,8 +2,12 @@ import { motion } from 'motion/react';
 import { Microscope, Activity, Award, Users, Heart, Target } from 'lucide-react';
 import about1 from '../../assets/about1.jpeg';
 import about2 from '../../assets/about2.jpeg';
+import SEO from '../components/SEO';
+import { useSanitySEO } from '../hooks/useSanitySEO';
 
 const AboutPage = () => {
+    const { seo } = useSanitySEO('page', 'about');
+
     const fadeInUp = {
         initial: { opacity: 0, y: 20 },
         whileInView: { opacity: 1, y: 0 },
@@ -20,7 +24,13 @@ const AboutPage = () => {
     };
 
     return (
-        <div className="bg-background">
+        <div className="bg-white font-sans text-slate-900">
+            <SEO
+                title={seo?.title || "About Us | Advanced Diagnostic Services in Dwarka"}
+                description={seo?.description || "Learn about National Imaging & Path Labs, Dwarka's leading diagnostic center. Expert radiologists, pathologists, and advanced technology for precise reports."}
+                keywords={seo?.keywords?.join(', ') || "about national imaging, diagnostic center profile, radiologists in dwarka, pathology lab history"}
+                image={seo?.image}
+            />
             {/* Hero Section */}
             <section className="relative h-[40vh] min-h-[400px] flex items-center justify-center bg-primary overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20 Mix-blend-overlay"></div>

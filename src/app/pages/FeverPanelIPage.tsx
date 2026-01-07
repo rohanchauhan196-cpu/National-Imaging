@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { FlaskConical, Clock, ShieldCheck, AlertCircle, Thermometer, User, CheckCircle2, Droplet } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const FeverPanelIPage = () => {
     const faqs = [
@@ -39,6 +40,11 @@ const FeverPanelIPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title="Fever Panel I"
+                description="Comprehensive Fever Panel I including Malaria, Typhoid, and Dengue tests. Early detection of infections."
+                keywords="fever panel 1, dengue test, malaria antigen, widal test, typhoid fever test"
+            />
             {/* Hero Section */}
             <div className="relative bg-primary py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

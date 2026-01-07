@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { FlaskConical, Clock, ShieldCheck, AlertCircle, TestTube, User, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const DiabeticProfilePage = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -31,6 +32,11 @@ const DiabeticProfilePage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title="Diabetic Profile"
+                description="Monitor Diabetes with our comprehensive Diabetic Profile including HbA1c, Fasting Sugar, and Kidney tests."
+                keywords="diabetes test, hba1c test, sugar test, diabetic profile price, kidney function test"
+            />
             {/* Hero Section */}
             <div className="relative bg-primary py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

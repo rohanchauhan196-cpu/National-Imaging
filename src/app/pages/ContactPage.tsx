@@ -1,9 +1,19 @@
 import { motion } from 'motion/react';
-import { MapPin, Phone, Clock, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import SEO from '../components/SEO';
+import { useSanitySEO } from '../hooks/useSanitySEO';
 
 const ContactPage = () => {
+    const { seo } = useSanitySEO('page', 'contact');
+
     return (
-        <div className="bg-background">
+        <div className="bg-slate-50 min-h-screen pt-20 font-sans">
+            <SEO
+                title={seo?.title || "Contact Us | Book Appointment"}
+                description={seo?.description || "Contact National Imaging & Path Labs in Dwarka. Call 97111 27333 for appointments or home collection. Visit us at Sector 12, Dwarka."}
+                keywords={seo?.keywords?.join(', ') || "contact diagnostic lab, lab appointment, home collection number, dwarka lab address, national imaging contact"}
+                image={seo?.image}
+            />
             {/* Hero Section */}
             <section className="relative h-[40vh] min-h-[400px] flex items-center justify-center bg-primary overflow-hidden">
                 <div className="absolute inset-0 bg-primary/20 Mix-blend-overlay"></div>

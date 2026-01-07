@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { sanityClient, urlFor } from '../../sanityClient';
+import SEO from '../components/SEO';
 
 // Type for Sanity Data
 interface Service {
@@ -41,6 +42,11 @@ const ServicesPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20">
+            <SEO
+                title="All Services"
+                description="Explore our wide range of diagnostic services including Pathology, Radiology, and Cardiology. Accurate results and expert care."
+                keywords="all medical services, diagnostic test list, medical imaging services, pathology tests"
+            />
             {/* Hero Section */}
             <section className="bg-primary py-20 text-center text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

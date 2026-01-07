@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { FlaskConical, Clock, ShieldCheck, AlertCircle, Droplet, User, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const ExtendedIronProfilePage = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -47,6 +48,11 @@ const ExtendedIronProfilePage = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title="Extended Iron Profile"
+                description="Advanced Iron studies including Ferritin and Transferrin Saturation. Get accurate results for Anemia and Iron deficiency."
+                keywords="extended iron profile, ferritin test, iron saturation, anemia advanced test, blood test delhi"
+            />
             {/* Hero Section */}
             <div className="relative bg-primary py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
