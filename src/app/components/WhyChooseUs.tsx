@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
-import { CheckCircle2, Clock, Shield, Users, Zap, Award } from 'lucide-react';
+import { CheckCircle2, Clock, Shield, Award, Home, Wallet, Ambulance } from 'lucide-react';
 
 const features = [
+  // List Items (Left Side)
   {
     icon: <CheckCircle2 className="w-6 h-6" />,
     title: 'NABL Certified',
@@ -17,20 +18,26 @@ const features = [
     title: 'Accurate Results',
     description: 'Advanced technology and expert pathologists for precise diagnostics.',
   },
+  // Card Items (Right Side)
   {
-    icon: <Users className="w-6 h-6" />,
+    icon: <Award className="w-6 h-6" />,
     title: 'Expert Team',
-    description: 'Highly qualified and experienced medical professionals.',
+    description: 'Highly qualified doctors and technicians ensuring accurate reports.',
   },
   {
-    icon: <Zap className="w-6 h-6" />,
+    icon: <Home className="w-6 h-6" />,
     title: 'Home Collection',
     description: 'Free sample collection from your doorstep at your convenience.',
   },
   {
-    icon: <Award className="w-6 h-6" />,
+    icon: <Wallet className="w-6 h-6" />,
     title: 'Affordable Pricing',
     description: 'Competitive prices with various health package options.',
+  },
+  {
+    icon: <Ambulance className="w-6 h-6" />,
+    title: '24/7 Ambulance',
+    description: 'Emergency ambulance support available round the clock.',
   },
 ];
 
@@ -58,7 +65,7 @@ const WhyChooseUs = () => {
               Your Trusted Partner in <span className="text-primary">Healthcare</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              With state-of-the-art facilities and a commitment to excellence, 
+              With state-of-the-art facilities and a commitment to excellence,
               we provide reliable diagnostic services that you can trust for your health needs.
             </p>
 
@@ -103,12 +110,9 @@ const WhyChooseUs = () => {
                 whileHover={{ y: -10, scale: 1.05 }}
                 className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-border"
               >
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 10 }}
-                  className="w-14 h-14 bg-secondary text-white rounded-xl flex items-center justify-center mb-4"
-                >
+                <div className="w-14 h-14 bg-secondary text-white rounded-xl flex items-center justify-center mb-4">
                   {feature.icon}
-                </motion.div>
+                </div>
                 <h4 className="mb-2">{feature.title}</h4>
                 <p className="text-sm text-muted-foreground">{feature.description}</p>
               </motion.div>

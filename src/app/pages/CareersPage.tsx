@@ -1,23 +1,29 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Briefcase, MapPin, Clock, X, Upload, FileText } from 'lucide-react';
+import { Briefcase, MapPin, Clock, X, Upload, FileText, ChevronDown, Send, Mail } from 'lucide-react';
 import { sanityClient } from '../../sanityClient';
+import SEO from '../components/SEO';
+import { useSanitySEO } from '../hooks/useSanitySEO';
 
 interface JobPosting {
     title: string;
     department: string;
     location: string;
-    type: string; // Full-time, Part-time, Contract
+    type: string;
     description: string;
     requirements: string[];
     postedDate: string;
 }
 
 const CareersPage = () => {
+    const { seo } = useSanitySEO('page', 'careers');
     const [jobs, setJobs] = useState<JobPosting[]>([]);
     const [loading, setLoading] = useState(true);
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
     const [selectedJob, setSelectedJob] = useState<JobPosting | null>(null);
     const [showApplicationForm, setShowApplicationForm] = useState(false);
+
+    // Application form state
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -48,7 +54,12 @@ const CareersPage = () => {
             });
     }, []);
 
-    const handleApply = (job: JobPosting) => {
+    const toggleJob = (index: number) => {
+        setExpandedIndex(expandedIndex === index ? null : index);
+    };
+
+    const handleApply = (e: React.MouseEvent, job: JobPosting) => {
+        e.stopPropagation(); // Prevent toggling accordion
         setSelectedJob(job);
         setShowApplicationForm(true);
     };
@@ -61,7 +72,6 @@ const CareersPage = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Here you would typically send the form data to your backend
         console.log('Application submitted:', { ...formData, job: selectedJob?.title });
         alert('Application submitted successfully!');
         setShowApplicationForm(false);
@@ -69,222 +79,285 @@ const CareersPage = () => {
     };
 
     if (loading) return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-            <div className="text-slate-500 text-lg">Loading opportunities...</div>
+        <div className="flex items-center justify-center min-h-screen bg-slate-50">
+            <div className="flex flex-col items-center gap-2">
+                <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                <div className="text-slate-500 font-medium">Loading opportunities...</div>
+            </div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 pt-20">
+        <div className="min-h-screen bg-slate-50 pt-20 font-sans">
+            <SEO
+                title={seo?.title || "Careers | National Imaging and Path Labs"}
+                description={seo?.description || "Join our team of medical experts. View current job openings at National Imaging and Path Labs."}
+                keywords={seo?.keywords?.join(', ') || "careers, jobs, medical jobs, lab technician jobs, dwarka"}
+                image={seo?.image}
+            />
+
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-primary via-blue-600 to-blue-700 py-20 text-center text-white relative overflow-hidden">
+            <section className="bg-primary text-white py-20 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
-                <div className="container mx-auto px-4 relative z-10">
+                <div className="container mx-auto px-4 relative z-10 text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-bold mb-4"
+                        className="text-4xl md:text-5xl font-bold mb-6"
                     >
-                        Join Our Team
+                        Build Your Career With Us
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-blue-100 text-lg max-w-2xl mx-auto"
+                        className="text-blue-100 text-lg max-w-2xl mx-auto leading-relaxed"
                     >
-                        Be part of a team dedicated to providing exceptional healthcare services.
+                        Join a team that values excellence, compassion, and innovation in healthcare.
                     </motion.p>
                 </div>
             </section>
 
-            {/* Job Listings */}
-            <section className="py-16">
-                <div className="container mx-auto px-4">
+            {/* Main Content */}
+            <div className="container mx-auto px-4 py-16 max-w-5xl">
+
+                {/* General Application Callout */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-16 text-center"
+                >
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-50 rounded-full mb-4">
+                        <Send className="w-6 h-6 text-primary" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-slate-800 mb-2">Don't see a suitable role?</h2>
+                    <p className="text-slate-600 mb-6">
+                        We are always looking for talented individuals. Send your resume directly to us.
+                    </p>
+                    <a
+                        href="mailto:nipathlabs@gmail.com"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        <Mail className="w-4 h-4" />
+                        nipathlabs@gmail.com
+                    </a>
+                </motion.div>
+
+                {/* Job Listings Accordion */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-slate-800 mb-6 pl-2 border-l-4 border-primary">Current Openings</h3>
+
                     {jobs.length === 0 ? (
-                        <div className="text-center p-12 bg-white/60 backdrop-blur-sm rounded-2xl border border-slate-200/50 text-slate-500">
-                            <Briefcase className="w-16 h-16 mx-auto mb-4 opacity-30" />
-                            <p className="text-lg">No open positions at the moment.</p>
-                            <p className="text-sm mt-2">Check back soon for new opportunities!</p>
+                        <div className="text-center py-12 text-slate-500 bg-white rounded-xl border border-dashed border-slate-200">
+                            No specific openings listed right now. Please email us your resume!
                         </div>
                     ) : (
-                        <div className="max-w-4xl mx-auto space-y-6">
-                            {jobs.map((job, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="bg-white rounded-xl shadow-sm border border-slate-200/50 p-6 hover:shadow-lg transition-all duration-300"
+                        jobs.map((job, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden ${expandedIndex === index
+                                        ? 'border-primary/50 shadow-md ring-1 ring-primary/10'
+                                        : 'border-slate-200 shadow-sm hover:border-primary/30'
+                                    }`}
+                            >
+                                {/* Header / Trigger */}
+                                <div
+                                    onClick={() => toggleJob(index)}
+                                    className="p-6 cursor-pointer flex items-center justify-between gap-4 group"
                                 >
-                                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                                        <div className="flex-1">
-                                            <h2 className="text-2xl font-bold text-slate-900 mb-2">{job.title}</h2>
-                                            <div className="flex flex-wrap gap-3 text-sm text-slate-600">
-                                                <span className="flex items-center gap-1.5">
-                                                    <Briefcase className="w-4 h-4 text-primary" />
-                                                    {job.department}
+                                    <div className="flex-1">
+                                        <h4 className="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors flex items-center gap-2">
+                                            {job.title}
+                                            {expandedIndex === index && (
+                                                <span className="text-xs bg-primary text-white px-2 py-0.5 rounded-full font-normal">
+                                                    Open
                                                 </span>
-                                                <span className="flex items-center gap-1.5">
-                                                    <MapPin className="w-4 h-4 text-primary" />
-                                                    {job.location}
-                                                </span>
-                                                <span className="flex items-center gap-1.5">
-                                                    <Clock className="w-4 h-4 text-primary" />
-                                                    {job.type}
-                                                </span>
-                                            </div>
+                                            )}
+                                        </h4>
+                                        <div className="flex flex-wrap gap-4 mt-2 text-sm text-slate-500">
+                                            <span className="flex items-center gap-1.5 bg-slate-50 px-2 py-1 rounded-md">
+                                                <Briefcase className="w-3.5 h-3.5" />
+                                                {job.department}
+                                            </span>
+                                            <span className="flex items-center gap-1.5 bg-slate-50 px-2 py-1 rounded-md">
+                                                <MapPin className="w-3.5 h-3.5" />
+                                                {job.location}
+                                            </span>
+                                            <span className="flex items-center gap-1.5 bg-slate-50 px-2 py-1 rounded-md">
+                                                <Clock className="w-3.5 h-3.5" />
+                                                {job.type}
+                                            </span>
                                         </div>
-                                        <motion.button
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            onClick={() => handleApply(job)}
-                                            className="px-6 py-2.5 bg-gradient-to-r from-primary to-blue-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
-                                        >
-                                            Apply Now
-                                        </motion.button>
                                     </div>
+                                    <div className={`w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center transition-transform duration-300 ${expandedIndex === index ? 'rotate-180 bg-primary/10 text-primary' : 'text-slate-400'}`}>
+                                        <ChevronDown className="w-5 h-5" />
+                                    </div>
+                                </div>
 
-                                    <p className="text-slate-700 mb-4 leading-relaxed">{job.description}</p>
+                                {/* Expanded Content */}
+                                <AnimatePresence>
+                                    {expandedIndex === index && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="border-t border-slate-100 bg-slate-50/50"
+                                        >
+                                            <div className="p-6 pt-4">
+                                                <div className="grid md:grid-cols-3 gap-8">
+                                                    <div className="md:col-span-2 space-y-6">
+                                                        <div>
+                                                            <h5 className="font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                                                                About the Role
+                                                            </h5>
+                                                            <p className="text-slate-600 leading-relaxed text-sm">
+                                                                {job.description}
+                                                            </p>
+                                                        </div>
+                                                        {job.requirements && job.requirements.length > 0 && (
+                                                            <div>
+                                                                <h5 className="font-semibold text-slate-900 mb-2">Requirements</h5>
+                                                                <ul className="space-y-2">
+                                                                    {job.requirements.map((req, idx) => (
+                                                                        <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
+                                                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                                                                            {req}
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                        )}
+                                                    </div>
 
-                                    {job.requirements && job.requirements.length > 0 && (
-                                        <div>
-                                            <h3 className="font-semibold text-slate-800 mb-2">Requirements:</h3>
-                                            <ul className="list-disc list-inside space-y-1 text-slate-600 text-sm">
-                                                {job.requirements.map((req, idx) => (
-                                                    <li key={idx}>{req}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                                                    {/* Sidebar action */}
+                                                    <div className="flex flex-col justify-end md:items-end border-t md:border-t-0 md:border-l border-slate-200 pt-6 md:pt-0 md:pl-6">
+                                                        <p className="text-sm text-slate-500 mb-4 text-center md:text-right">
+                                                            Interested in this position? <br />
+                                                            Click below to start your application.
+                                                        </p>
+                                                        <button
+                                                            onClick={(e) => handleApply(e, job)}
+                                                            className="w-full md:w-auto px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                                                        >
+                                                            Apply Selection
+                                                            <Send className="w-4 h-4" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </motion.div>
                                     )}
-                                </motion.div>
-                            ))}
-                        </div>
+                                </AnimatePresence>
+                            </motion.div>
+                        ))
                     )}
                 </div>
-            </section>
+            </div>
 
-            {/* Application Form Modal */}
+            {/* Application Modal (Same Logic, Updated Style) */}
             <AnimatePresence>
                 {showApplicationForm && selectedJob && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setShowApplicationForm(false)}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4"
-                    >
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
                         <motion.div
-                            initial={{ scale: 0.9, y: 20 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 20 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden relative max-h-[90vh] overflow-y-auto"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setShowApplicationForm(false)}
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
                         >
-                            {/* Close button */}
-                            <button
-                                onClick={() => setShowApplicationForm(false)}
-                                className="absolute top-4 right-4 w-10 h-10 bg-slate-100 hover:bg-red-500 text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-colors z-10"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
-
-                            {/* Header */}
-                            <div className="bg-gradient-to-br from-primary to-blue-600 p-8 text-white">
-                                <h2 className="text-2xl font-bold mb-2">Apply for {selectedJob.title}</h2>
-                                <p className="text-blue-100 text-sm">{selectedJob.department} • {selectedJob.location}</p>
+                            <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+                                <div>
+                                    <h3 className="font-bold text-lg text-slate-900">Apply for Position</h3>
+                                    <p className="text-sm text-primary font-medium">{selectedJob.title}</p>
+                                </div>
+                                <button
+                                    onClick={() => setShowApplicationForm(false)}
+                                    className="p-2 hover:bg-slate-200 rounded-full transition-colors"
+                                >
+                                    <X className="w-5 h-5 text-slate-500" />
+                                </button>
                             </div>
 
-                            {/* Form */}
-                            <form onSubmit={handleSubmit} className="p-8 space-y-6">
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name *</label>
-                                    <input
-                                        type="text"
-                                        required
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                        placeholder="John Doe"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address *</label>
-                                    <input
-                                        type="email"
-                                        required
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                        placeholder="john@example.com"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">Phone Number *</label>
-                                    <input
-                                        type="tel"
-                                        required
-                                        value={formData.phone}
-                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                        placeholder="+91 98765 43210"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">Upload Resume *</label>
-                                    <div className="relative">
+                            <div className="overflow-y-auto p-6">
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                                         <input
-                                            type="file"
+                                            type="text"
                                             required
-                                            accept=".pdf,.doc,.docx"
-                                            onChange={handleFileChange}
-                                            className="hidden"
-                                            id="resume-upload"
+                                            className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                            placeholder="Enter your full name"
                                         />
-                                        <label
-                                            htmlFor="resume-upload"
-                                            className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-slate-300 rounded-lg cursor-pointer hover:border-primary hover:bg-primary/5 transition-colors"
-                                        >
-                                            {formData.resume ? (
-                                                <>
-                                                    <FileText className="w-5 h-5 text-primary" />
-                                                    <span className="text-sm text-slate-700">{formData.resume.name}</span>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <Upload className="w-5 h-5 text-slate-400" />
-                                                    <span className="text-sm text-slate-500">Click to upload (PDF, DOC, DOCX)</span>
-                                                </>
-                                            )}
-                                        </label>
                                     </div>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">Cover Letter (Optional)</label>
-                                    <textarea
-                                        value={formData.coverLetter}
-                                        onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
-                                        rows={4}
-                                        className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
-                                        placeholder="Tell us why you're a great fit for this role..."
-                                    />
-                                </div>
-
-                                <motion.button
-                                    type="submit"
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="w-full bg-gradient-to-r from-primary to-blue-600 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                                >
-                                    Submit Application
-                                </motion.button>
-                            </form>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                                        <input
+                                            type="email"
+                                            required
+                                            className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                            placeholder="name@example.com"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                                        <input
+                                            type="tel"
+                                            required
+                                            className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                            value={formData.phone}
+                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                            placeholder="+91 90000 00000"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-1">Resume (PDF/Doc)</label>
+                                        <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-lg hover:bg-slate-50 transition-colors relative cursor-pointer">
+                                            <input
+                                                id="file-upload"
+                                                name="file-upload"
+                                                type="file"
+                                                className="opacity-0 absolute inset-0 cursor-pointer"
+                                                accept=".pdf,.doc,.docx"
+                                                onChange={handleFileChange}
+                                                required
+                                            />
+                                            <div className="space-y-1 text-center pointer-events-none">
+                                                <Upload className="mx-auto h-8 w-8 text-slate-400" />
+                                                <div className="flex text-sm text-slate-600 justify-center">
+                                                    <span className="font-medium text-primary">Upload a file</span>
+                                                </div>
+                                                <p className="text-xs text-slate-500">
+                                                    {formData.resume ? formData.resume.name : "PDF, DOC up to 5MB"}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="pt-4">
+                                        <button
+                                            type="submit"
+                                            className="w-full py-3 px-4 bg-primary hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5"
+                                        >
+                                            Submit Application
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </motion.div>
-                    </motion.div>
+                    </div>
                 )}
             </AnimatePresence>
         </div>
