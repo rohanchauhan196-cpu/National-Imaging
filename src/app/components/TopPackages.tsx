@@ -6,7 +6,7 @@ const packages = [
   {
     name: 'Full Body Checkup',
     price: '₹1800',
-    tests: 65,
+    tests: 6,
     popular: true,
     link: '/packages/preventive-comprehensive',
     features: [
@@ -36,7 +36,7 @@ const packages = [
   {
     name: 'Diabetic Profile',
     price: '₹1000',
-    tests: 7,
+    tests: 6,
     popular: false,
     link: '/packages/diabetic-profile',
     features: [
