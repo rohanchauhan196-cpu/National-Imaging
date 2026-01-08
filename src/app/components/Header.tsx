@@ -218,32 +218,32 @@ const Header = ({ topOffset }: HeaderProps) => {
                       <MobileNavLink to="/all-packages" onClick={() => setIsMobileMenuOpen(false)}>
                         All Packages
                       </MobileNavLink>
-                      <MobileNavLink to="/health-panel-whole-body" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/health-panel-whole-body" onClick={() => setIsMobileMenuOpen(false)}>
                         Health Panel - Whole Body
                       </MobileNavLink>
-                      <MobileNavLink to="/preventive-health-panel-comprehensive" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/preventive-health-panel-comprehensive" onClick={() => setIsMobileMenuOpen(false)}>
                         Preventive Health Panel - Comprehensive
                       </MobileNavLink>
-                      <MobileNavLink to="/preventive-health-panel-comprehensive-plus" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/preventive-health-panel-comprehensive-plus" onClick={() => setIsMobileMenuOpen(false)}>
                         Preventive Health Panel - Comprehensive+
                       </MobileNavLink>
-                      <MobileNavLink to="/routine-health-panel" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/routine-health-panel" onClick={() => setIsMobileMenuOpen(false)}>
                         Routine Health Panel
                       </MobileNavLink>
-                      <MobileNavLink to="/fever-profile-basic" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/fever-profile-basic" onClick={() => setIsMobileMenuOpen(false)}>
                         Fever Profile Basic
                       </MobileNavLink>
-                      <MobileNavLink to="/fever-profile-advance" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/fever-profile-advance" onClick={() => setIsMobileMenuOpen(false)}>
                         Fever Profile Advance
                       </MobileNavLink>
-                      <MobileNavLink to="/fever-panel-i" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/fever-panel-i" onClick={() => setIsMobileMenuOpen(false)}>
                         Fever Panel-I
                       </MobileNavLink>
-                      <MobileNavLink to="/extended-iron-profile" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MobileNavLink to="packages/extended-iron-profile" onClick={() => setIsMobileMenuOpen(false)}>
                         Extended Iron Profile
                       </MobileNavLink>
-                      
-                      <MobileNavLink to="/diabetic-profile" onClick={() => setIsMobileMenuOpen(false)}>
+
+                      <MobileNavLink to="packages/diabetic-profile" onClick={() => setIsMobileMenuOpen(false)}>
                         Diabetic Profile
                       </MobileNavLink>
                     </motion.div>
