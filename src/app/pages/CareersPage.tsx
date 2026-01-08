@@ -124,27 +124,7 @@ const CareersPage = () => {
             {/* Main Content */}
             <div className="container mx-auto px-4 py-16 max-w-5xl">
 
-                {/* General Application Callout */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-16 text-center"
-                >
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-50 rounded-full mb-4">
-                        <Send className="w-6 h-6 text-primary" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-800 mb-2">Don't see a suitable role?</h2>
-                    <p className="text-slate-600 mb-6">
-                        We are always looking for talented individuals. Send your resume directly to us.
-                    </p>
-                    <a
-                        href="mailto:nipathlabs@gmail.com"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl"
-                    >
-                        <Mail className="w-4 h-4" />
-                        nipathlabs@gmail.com
-                    </a>
-                </motion.div>
+               
 
                 {/* Job Listings Accordion */}
                 <div className="space-y-4">
@@ -239,6 +219,8 @@ const CareersPage = () => {
                                                         )}
                                                     </div>
 
+                                                    
+
                                                     {/* Sidebar action */}
                                                     <div className="flex flex-col justify-end md:items-end border-t md:border-t-0 md:border-l border-slate-200 pt-6 md:pt-0 md:pl-6">
                                                         <p className="text-sm text-slate-500 mb-4 text-center md:text-right">
@@ -263,6 +245,29 @@ const CareersPage = () => {
                     )}
                 </div>
             </div>
+
+
+             {/* General Application Callout */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-16 text-center"
+                >
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-50 rounded-full mb-4">
+                        <Send className="w-6 h-6 text-primary" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-slate-800 mb-2">Don't see a suitable role?</h2>
+                    <p className="text-slate-600 mb-6">
+                        We are always looking for talented individuals. Send your resume directly to us.
+                    </p>
+                    <a
+                        href="mailto:nipathlabs@gmail.com"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        <Mail className="w-4 h-4" />
+                        nipathlabs@gmail.com
+                    </a>
+                </motion.div>
 
             {/* Application Modal (Same Logic, Updated Style) */}
             <AnimatePresence>
