@@ -12,6 +12,7 @@ import img5 from '../../assets/5.jpeg';
 import img6 from '../../assets/6.jpeg';
 import img7 from '../../assets/7.jpeg';
 import img8 from '../../assets/8.jpeg';
+import img9 from '../../assets/about2.jpeg';
 
 const images = [img1, img2, img3, img4, img5, img6, img7, img8];
 
