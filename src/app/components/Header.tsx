@@ -242,9 +242,7 @@ const Header = ({ topOffset }: HeaderProps) => {
                       <MobileNavLink to="/extended-iron-profile" onClick={() => setIsMobileMenuOpen(false)}>
                         Extended Iron Profile
                       </MobileNavLink>
-                      <MobileNavLink to="/basic-iron-profile" onClick={() => setIsMobileMenuOpen(false)}>
-                        Basic Iron Profile
-                      </MobileNavLink>
+                      
                       <MobileNavLink to="/diabetic-profile" onClick={() => setIsMobileMenuOpen(false)}>
                         Diabetic Profile
                       </MobileNavLink>
