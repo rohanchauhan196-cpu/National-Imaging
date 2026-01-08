@@ -8,6 +8,7 @@ import RadiologyServicesPage from './pages/RadiologyServicesPage';
 import CardiologyServicesPage from './pages/CardiologyServicesPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
+import GalleryPage from './pages/GalleryPage';
 import ScrollToTop from './components/ScrollToTop';
 
 import HealthPanelWholeBodyPage from './pages/HealthPanelWholeBodyPage';
@@ -55,6 +56,7 @@ const App = () => {
           <Route path="careers" element={<CareersPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogPostPage />} />
+          <Route path="gallery" element={<GalleryPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="refund-policy" element={<RefundPolicyPage />} />
         </Route>

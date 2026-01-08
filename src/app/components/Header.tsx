@@ -69,6 +69,7 @@ const Header = ({ topOffset }: HeaderProps) => {
               <NavLink to="/">  </NavLink>
               <NavLink to="/about">About Us</NavLink>
               <NavLink to="/all-services">Services</NavLink>
+              <NavLink to="/gallery">Gallery</NavLink>
 
               {/* Packages Dropdown */}
               <div
@@ -187,6 +188,9 @@ const Header = ({ topOffset }: HeaderProps) => {
               </MobileNavLink>
               <MobileNavLink to="/all-services" onClick={() => setIsMobileMenuOpen(false)}>
                 Services
+              </MobileNavLink>
+              <MobileNavLink to="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
+                Gallery
               </MobileNavLink>
 
               {/* Packages Dropdown for Mobile */}

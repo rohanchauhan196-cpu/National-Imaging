@@ -37,7 +37,7 @@ const features = [
   {
     icon: <Ambulance className="w-6 h-6" />,
     title: '24/7 Ambulance',
-    description: 'Emergency ambulance support available round the clock.',
+    description: 'Ambulance support available round the clock.',
   },
 ];
 
