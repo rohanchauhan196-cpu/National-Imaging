@@ -147,7 +147,7 @@ const WhyChooseUs = () => {
                     transition={{ type: "spring", delay: 0.6 }}
                     className="text-3xl mb-1"
                   >
-                    50k+
+                    150k+
                   </motion.p>
                   <p className="text-sm text-white/80">Happy Patients</p>
                 </div>
@@ -171,5 +171,6 @@ const WhyChooseUs = () => {
     </section>
   );
 };
+
 
 export default WhyChooseUs;
