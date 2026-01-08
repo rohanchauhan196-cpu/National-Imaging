@@ -3,14 +3,17 @@ import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import { useSanitySEO } from '../hooks/useSanitySEO';
 
-const images = [
-  'https://images.unsplash.com/photo-1564869737734-13f5a3e05b13?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1580281657524-5e0c76d7a9b6?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1591897144120-6d9f5b5d1f5f?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1517976487492-9d3f1d1ebf14?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1580281657523-1d9b6a1b2a84?auto=format&fit=crop&w=1400&q=80',
-];
+// Import local assets so Vite bundles them properly
+import img1 from '../../assets/about1.jpeg';
+import img2 from '../../assets/2.jpeg';
+import img3 from '../../assets/3.jpeg';
+import img4 from '../../assets/4.jpeg';
+import img5 from '../../assets/5.jpeg';
+import img6 from '../../assets/6.jpeg';
+import img7 from '../../assets/7.jpeg';
+import img8 from '../../assets/8.jpeg';
+
+const images = [img1, img2, img3, img4, img5, img6, img7, img8];
 
 const GalleryPage = () => {
   const { seo } = useSanitySEO('page', 'gallery');
