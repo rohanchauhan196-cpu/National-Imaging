@@ -6,7 +6,6 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import Empanelments from '../components/Empanelments';
 import LatestBlogs from '../components/LatestBlogs';
 import MobileAppSection from '../components/MobileAppSection';
-import GoogleReviews from '../components/GoogleReviews';
 
 import SEO from '../components/SEO';
 import { useSanitySEO } from '../hooks/useSanitySEO';
@@ -28,7 +27,6 @@ const HomePage = () => {
             <TopPackages />
             <TestimonialsSection />
             <Empanelments />
-            <GoogleReviews />
             <LatestBlogs />
             <MobileAppSection />
         </div>
