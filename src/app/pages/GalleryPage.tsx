@@ -53,7 +53,7 @@ const GalleryPage = () => {
         image={seo?.image}
       />
 
-      <section className="relative h-[35vh] min-h-[280px] flex items-center justify-center bg-primary overflow-hidden">
+      <section className="relative h-[35vh] min-h-[280px] flex items-center justify-center bg-primary overflow-hidden mt-20">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20 Mix-blend-overlay"></div>
         <div className="container mx-auto px-4 z-10 text-center text-white">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl md:text-5xl font-bold mb-4">
