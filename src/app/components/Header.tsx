@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, User, Shield, Activity, Thermometer, Flame, Droplet, TestTube, HeartPulse, ShieldPlus } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/pnggg.png';
+import logo from '../../assets/National-logo.png';
 
 /* ✅ PROPS TYPE */
 type HeaderProps = {
