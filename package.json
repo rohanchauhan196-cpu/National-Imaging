@@ -42,6 +42,7 @@
     "@radix-ui/react-tooltip": "1.1.8",
     "@sanity/client": "^7.13.2",
     "@sanity/image-url": "^2.0.2",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/slick-carousel": "^1.6.40",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",

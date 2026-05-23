@@ -3,8 +3,82 @@ import { motion } from 'motion/react';
 import { ArrowLeft, Calendar, User, Twitter, Facebook, Linkedin, ChevronRight, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { sanityClient, urlFor } from '../../sanityClient';
-import { PortableText } from '@portabletext/react';
+import { PortableText, PortableTextComponents } from '@portabletext/react';
 import SEO from '../components/SEO';
+
+// Custom PortableText components for proper rendering
+const portableTextComponents: PortableTextComponents = {
+    block: {
+        h1: ({ children }) => (
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mt-10 mb-4 leading-tight">{children}</h1>
+        ),
+        h2: ({ children }) => (
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mt-8 mb-4 leading-snug">{children}</h2>
+        ),
+        h3: ({ children }) => (
+            <h3 className="text-xl md:text-2xl font-semibold text-slate-800 mt-6 mb-3 leading-snug">{children}</h3>
+        ),
+        h4: ({ children }) => (
+            <h4 className="text-lg md:text-xl font-semibold text-slate-700 mt-5 mb-2">{children}</h4>
+        ),
+        normal: ({ children }) => (
+            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-5">{children}</p>
+        ),
+        blockquote: ({ children }) => (
+            <blockquote className="border-l-4 border-primary pl-5 py-2 my-6 italic text-slate-500 bg-slate-50 rounded-r-lg">
+                {children}
+            </blockquote>
+        ),
+    },
+    list: {
+        bullet: ({ children }) => (
+            <ul className="list-disc list-outside pl-6 space-y-2 mb-6 text-slate-600">{children}</ul>
+        ),
+        number: ({ children }) => (
+            <ol className="list-decimal list-outside pl-6 space-y-2 mb-6 text-slate-600">{children}</ol>
+        ),
+    },
+    listItem: {
+        bullet: ({ children }) => (
+            <li className="text-base md:text-lg leading-relaxed pl-1">{children}</li>
+        ),
+        number: ({ children }) => (
+            <li className="text-base md:text-lg leading-relaxed pl-1">{children}</li>
+        ),
+    },
+    marks: {
+        strong: ({ children }) => <strong className="font-semibold text-slate-800">{children}</strong>,
+        em: ({ children }) => <em className="italic">{children}</em>,
+        underline: ({ children }) => <span className="underline decoration-primary/40 underline-offset-2">{children}</span>,
+        link: ({ value, children }) => (
+            <a
+                href={value?.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+            >
+                {children}
+            </a>
+        ),
+    },
+    types: {
+        image: ({ value }) => {
+            if (!value?.asset) return null;
+            return (
+                <figure className="my-8">
+                    <img
+                        src={urlFor(value).width(1200).url()}
+                        alt={value.alt || ''}
+                        className="w-full rounded-2xl shadow-sm"
+                    />
+                    {value.caption && (
+                        <figcaption className="text-center text-sm text-slate-400 mt-3">{value.caption}</figcaption>
+                    )}
+                </figure>
+            );
+        },
+    },
+};
 
 const BlogPostPage = () => {
     const { id } = useParams();
@@ -130,8 +204,8 @@ const BlogPostPage = () => {
                             </div>
 
                             {/* Main Body */}
-                            <div className="prose prose-lg prose-slate max-w-none prose-headings:text-slate-800 prose-p:text-slate-600 prose-a:text-primary prose-img:rounded-2xl">
-                                {post.body ? <PortableText value={post.body} /> : <p>{post.excerpt}</p>}
+                            <div className="max-w-none">
+                                {post.body ? <PortableText value={post.body} components={portableTextComponents} /> : <p className="text-slate-600 leading-relaxed">{post.excerpt}</p>}
                             </div>
 
                             {/* Share & Tags */}

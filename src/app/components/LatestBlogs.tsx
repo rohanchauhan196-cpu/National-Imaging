@@ -70,51 +70,59 @@ const LatestBlogs = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {blogs.map((blog, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-border group"
-            >
-              <div className="bg-muted aspect-video overflow-hidden relative">
-                {blog.mainImage && (
-                  <img
-                    src={urlFor(blog.mainImage).width(800).url()}
-                    alt={blog.title}
-                    className="w-full h-full object-contain bg-white transition-transform duration-500 group-hover:scale-110"
-                  />
-                )}
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-4 mb-3 text-sm text-muted-foreground">
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-md">
-                    {blog.categories?.[0]?.title || 'Health'}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(blog.publishedAt).toLocaleDateString()}
-                  </span>
+          {blogs.map((blog, index) => {
+            // Extract excerpt from body blocks
+            const excerpt = blog.body
+              ?.filter((block: any) => block._type === 'block' && block.style === 'normal')
+              ?.map((block: any) => block.children?.map((child: any) => child.text).join(''))
+              ?.join(' ')
+              ?.slice(0, 150) || '';
+
+            return (
+              <motion.article
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-border group flex flex-col h-full"
+              >
+                <div className="bg-muted aspect-video overflow-hidden relative flex-shrink-0">
+                  {blog.mainImage && (
+                    <img
+                      src={urlFor(blog.mainImage).width(800).height(450).url()}
+                      alt={blog.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  )}
                 </div>
-                <h3 className="text-xl mb-3 font-semibold line-clamp-2">{blog.title}</h3>
-                <p className="text-muted-foreground mb-4 line-clamp-3">
-                  {/* Simplified excerpt logic - normally we'd parse Portable Text */}
-                  Read more to learn about {blog.title}...
-                </p>
-                <motion.a
-                  href={`/blog/${blog.slug.current}`}
-                  whileHover={{ x: 5 }}
-                  className="text-primary inline-flex items-center gap-2 group-hover:gap-3 transition-all"
-                >
-                  Read More
-                  <ArrowRight className="w-4 h-4" />
-                </motion.a>
-              </div>
-            </motion.article>
-          ))}
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex items-center gap-4 mb-3 text-sm text-muted-foreground">
+                    <span className="bg-primary/10 text-primary px-3 py-1 rounded-md">
+                      {blog.categories?.[0]?.title || 'Health'}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {new Date(blog.publishedAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <h3 className="text-xl mb-3 font-semibold line-clamp-2">{blog.title}</h3>
+                  <p className="text-muted-foreground mb-4 line-clamp-3 flex-grow">
+                    {excerpt ? `${excerpt}...` : `Read more to learn about ${blog.title}...`}
+                  </p>
+                  <motion.a
+                    href={`/blog/${blog.slug.current}`}
+                    whileHover={{ x: 5 }}
+                    className="text-primary inline-flex items-center gap-2 group-hover:gap-3 transition-all mt-auto"
+                  >
+                    Read More
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.a>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
 
         <motion.div

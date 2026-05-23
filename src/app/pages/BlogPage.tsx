@@ -90,7 +90,7 @@ const BlogPage = () => {
                                         <img
                                             src={urlFor(post.mainImage).width(800).url()}
                                             alt={post.title}
-                                            className="w-full h-full object-contain bg-white transition-transform duration-500 group-hover:scale-105"
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                         />
                                     )}
                                     {post.categories && post.categories[0] && (
