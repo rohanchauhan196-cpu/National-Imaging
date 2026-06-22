@@ -4,7 +4,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import packageLab from '../../assets/package-lab.png';
 import packageConsult from '../../assets/package-consult.png';
-import packageImaging from '../../assets/package-imaging.png';
+import fever_profile from '../../assets/Fever Profile Basic.jpg';
+import basic_iron_profile from '../../assets/Basic Iron Profile.jpg';
+import fever_profile_advance from '../../assets/Fever Profile1.jpg';
+import diabetic_profile from '../../assets/diabetic profile.jpg';
+import routine_health from '../../assets/Routine Health Panel.jpg';
+import fever_panel_1 from '../../assets/Fever Panel - I.jpg';
+import preventive_health_comp from '../../assets/Preventive Health Panel comprehnsive.jpg';
+import extended_iron from '../../assets/Extended Iron.jpg';
+import preventive_health_comp_plus from '../../assets/Preventive Health Panel.jpg';
+import health_panel_whole_body from '../../assets/Health Panel.jpg';
+
 import SEO from '../components/SEO';
 import { useSanitySEO } from '../hooks/useSanitySEO';
 
@@ -13,7 +23,7 @@ export const packages = [
         name: 'Fever Profile Basic',
         price: '₹800',
         popular: false,
-        image: packageConsult,
+        image: fever_profile,
         link: '/packages/fever-basic',
         description: 'Basic fever screening including CBC, Malaria, Widal, and Urine analysis.'
     },
@@ -21,7 +31,7 @@ export const packages = [
         name: 'Basic Iron Profile',
         price: '₹1000',
         popular: false,
-        image: packageImaging,
+        image: basic_iron_profile,
         link: '/packages/basic-iron-profile',
         description: 'Essential iron tests including Serum Iron and TIBC.'
     },
@@ -29,7 +39,7 @@ export const packages = [
         name: 'Diabetic Profile',
         price: '₹1000',
         popular: false,
-        image: packageLab,
+        image: diabetic_profile,
         link: '/packages/diabetic-profile',
         description: 'Specialized profile for diabetes monitoring including HbA1c and Microalbumin.'
     },
@@ -37,7 +47,7 @@ export const packages = [
         name: 'Routine Health panel',
         price: '₹1400',
         popular: false,
-        image: packageLab,
+        image: routine_health,
         link: '/packages/routine-health',
         description: 'Essential health monitoring including Lipid, Liver, Kidney tests and Blood Sugar.'
     },
@@ -45,7 +55,7 @@ export const packages = [
         name: 'Fever Panel-I',
         price: '₹1400',
         popular: false,
-        image: packageLab,
+        image: fever_panel_1,
         link: '/packages/fever-panel-i',
         description: 'Comprehensive fever panel with Typhoid, Dengue, and Malaria screening.'
     },
@@ -53,7 +63,7 @@ export const packages = [
         name: 'Fever Profile Advance',
         price: '₹1600',
         popular: true,
-        image: packageImaging,
+        image: fever_profile_advance,
         link: '/packages/fever-advance',
         description: 'Advanced fever investigation with Culture, CRP, and detailed antigen tests.'
     },
@@ -61,7 +71,7 @@ export const packages = [
         name: 'Preventive Health Panel- Comprehensive',
         price: '₹1800',
         popular: false,
-        image: packageConsult,
+        image: preventive_health_comp,
         link: '/packages/preventive-comprehensive',
         description: 'Preventive checkup covering vital organ functions and vitamin levels.'
     },
@@ -69,7 +79,7 @@ export const packages = [
         name: 'EXTENDED IRON PROFILE',
         price: '₹1850',
         popular: false,
-        image: packageConsult,
+        image: extended_iron,
         link: '/packages/extended-iron-profile',
         description: 'Complete assessment of iron status including Ferritin and Transferrin.'
     },
@@ -77,7 +87,7 @@ export const packages = [
         name: 'Preventive Health Panel- Comprehensive+',
         price: '₹2200',
         popular: true,
-        image: packageImaging,
+        image: preventive_health_comp_plus,
         link: '/packages/preventive-comprehensive-plus',
         description: 'Advanced preventive panel with additional features for deeper insights.'
     },
@@ -85,7 +95,7 @@ export const packages = [
         name: 'Health Panel-Whole Body',
         price: '₹3000',
         popular: true,
-        image: packageLab,
+        image: health_panel_whole_body,
         link: '/packages/health-panel-whole-body',
         description: 'Comprehensive whole body checkup including Lipid, Liver, Kidney, Thyroid profiles and more.'
     },
