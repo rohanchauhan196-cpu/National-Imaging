@@ -16,10 +16,13 @@ const HomePage = () => {
     return (
         <div className="font-sans text-slate-900">
             <SEO
-                title={seo?.title || "National Imaging & Path Labs | Best Diagnostic Centre in Dwarka"}
-                description={seo?.description || "National Imaging & Path Labs offers MRI, CT Scan, Ultrasound, and Blood Tests in Dwarka. Accurate reports, home collection, and affordable prices."}
-                keywords={seo?.keywords?.join(', ') || "pathology lab dwarka, mri scan dwarka, ct scan dwarka, blood test home collection, diagnostic centre near me"}
+                title={seo?.title || "Advanced Diagnostic Centre in Delhi NCR | MRI, CT Scan, PET CT & Pathology"}
+                description={seo?.description || "Book MRI, CT Scan, PET CT, Ultrasound, Pathology, ECG, Echo, TMT and advanced diagnostic tests with expert doctors and accurate reports at our diagnostic centre in Delhi NCR."}
+                keywords={seo?.keywords?.join(', ') || "diagnostic centre, MRI scan, CT scan, PET CT scan, pathology lab, ultrasound, ECG test, Echo test, TMT test, health checkup, diagnostic centre in Delhi NCR"}
                 image={seo?.image}
+                ogTitle={seo?.title ? undefined : "Advanced Diagnostic Centre in Delhi NCR | Accurate Diagnostics & Healthcare"}
+                ogDescription={seo?.description ? undefined : "Advanced diagnostic services including MRI, CT Scan, PET CT, Pathology, Cardiology and health checkups with accurate reports and expert care."}
+                disableTitleTemplate={!seo?.title}
             />
             <HeroSection />
             <ServicesSection />
