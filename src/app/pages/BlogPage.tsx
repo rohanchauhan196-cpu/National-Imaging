@@ -85,12 +85,12 @@ const BlogPage = () => {
                                 className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-shadow group flex flex-col h-full"
                             >
                                 {/* Image */}
-                                <Link to={`/blog/${post.slug.current}`} className="block relative aspect-video overflow-hidden bg-muted">
+                                <Link to={`/blog/${post.slug.current}`} className="block relative overflow-hidden bg-muted">
                                     {post.mainImage && (
                                         <img
                                             src={urlFor(post.mainImage).width(800).url()}
                                             alt={post.title}
-                                            className="w-full h-full object-contain"
+                                            className="w-full h-auto block"
                                         />
                                     )}
                                     {post.categories && post.categories[0] && (

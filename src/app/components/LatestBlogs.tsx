@@ -88,12 +88,12 @@ const LatestBlogs = () => {
                 whileHover={{ y: -10 }}
                 className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-border group flex flex-col h-full"
               >
-                <div className="bg-muted aspect-video overflow-hidden relative flex-shrink-0">
+                <div className="bg-muted overflow-hidden relative flex-shrink-0">
                   {blog.mainImage && (
                     <img
                       src={urlFor(blog.mainImage).width(800).url()}
                       alt={blog.title}
-                      className="w-full h-full object-contain"
+                      className="w-full h-auto block"
                     />
                   )}
                 </div>
