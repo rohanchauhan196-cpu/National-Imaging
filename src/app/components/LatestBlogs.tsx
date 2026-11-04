@@ -91,9 +91,9 @@ const LatestBlogs = () => {
                 <div className="bg-muted aspect-video overflow-hidden relative flex-shrink-0">
                   {blog.mainImage && (
                     <img
-                      src={urlFor(blog.mainImage).width(800).height(450).url()}
+                      src={urlFor(blog.mainImage).width(800).url()}
                       alt={blog.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-contain"
                     />
                   )}
                 </div>
