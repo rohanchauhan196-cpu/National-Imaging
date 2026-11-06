@@ -1,31 +1,50 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Calendar, User, Twitter, Facebook, Linkedin, ChevronRight, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Twitter, Facebook, Linkedin, ChevronRight, ArrowRight, ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { sanityClient, urlFor } from '../../sanityClient';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import SEO from '../components/SEO';
+import { Helmet } from 'react-helmet-async';
+
+// Alignment chosen in Sanity (textAlign field or the Center/Right styles) wins;
+// otherwise body text is left-aligned on mobile and justified on larger screens.
+const alignClass = (value: any, fallback = 'text-left') => {
+    const align = value?.textAlign || (value?.style === 'center' ? 'center' : value?.style === 'right' ? 'right' : null);
+    if (align === 'center') return 'text-center';
+    if (align === 'right') return 'text-right';
+    if (align === 'left') return 'text-left';
+    if (align === 'justify') return 'text-justify';
+    return fallback;
+};
+const BODY_ALIGN = 'text-left md:text-justify hyphens-auto';
 
 // Custom PortableText components for proper rendering
 const portableTextComponents: PortableTextComponents = {
     block: {
-        h1: ({ children }) => (
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mt-10 mb-4 leading-tight">{children}</h1>
+        h1: ({ children, value }) => (
+            <h1 className={`text-3xl md:text-4xl font-bold text-slate-900 mt-10 mb-4 leading-tight ${alignClass(value)}`}>{children}</h1>
         ),
-        h2: ({ children }) => (
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mt-8 mb-4 leading-snug">{children}</h2>
+        h2: ({ children, value }) => (
+            <h2 className={`text-2xl md:text-3xl font-bold text-slate-800 mt-10 mb-4 leading-snug ${alignClass(value)}`}>{children}</h2>
         ),
-        h3: ({ children }) => (
-            <h3 className="text-xl md:text-2xl font-semibold text-slate-800 mt-6 mb-3 leading-snug">{children}</h3>
+        h3: ({ children, value }) => (
+            <h3 className={`text-xl md:text-2xl font-semibold text-slate-800 mt-8 mb-3 leading-snug ${alignClass(value)}`}>{children}</h3>
         ),
-        h4: ({ children }) => (
-            <h4 className="text-lg md:text-xl font-semibold text-slate-700 mt-5 mb-2">{children}</h4>
+        h4: ({ children, value }) => (
+            <h4 className={`text-lg md:text-xl font-semibold text-slate-700 mt-6 mb-2 ${alignClass(value)}`}>{children}</h4>
         ),
-        normal: ({ children }) => (
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-5">{children}</p>
+        normal: ({ children, value }) => (
+            <p className={`text-base md:text-lg text-slate-600 leading-relaxed mb-5 ${alignClass(value, BODY_ALIGN)}`}>{children}</p>
         ),
-        blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-primary pl-5 py-2 my-6 italic text-slate-500 bg-slate-50 rounded-r-lg">
+        center: ({ children }) => (
+            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-5 text-center">{children}</p>
+        ),
+        right: ({ children }) => (
+            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-5 text-right">{children}</p>
+        ),
+        blockquote: ({ children, value }) => (
+            <blockquote className={`border-l-4 border-primary pl-5 pr-4 py-2 my-6 italic text-slate-500 bg-slate-50 rounded-r-lg ${alignClass(value)}`}>
                 {children}
             </blockquote>
         ),
@@ -40,10 +59,10 @@ const portableTextComponents: PortableTextComponents = {
     },
     listItem: {
         bullet: ({ children }) => (
-            <li className="text-base md:text-lg leading-relaxed pl-1">{children}</li>
+            <li className={`text-base md:text-lg leading-relaxed pl-1 ${BODY_ALIGN}`}>{children}</li>
         ),
         number: ({ children }) => (
-            <li className="text-base md:text-lg leading-relaxed pl-1">{children}</li>
+            <li className={`text-base md:text-lg leading-relaxed pl-1 ${BODY_ALIGN}`}>{children}</li>
         ),
     },
     marks: {
@@ -98,7 +117,8 @@ const BlogPostPage = () => {
             excerpt,
             "author": author->{name, image, bio},
             "categories": categories[]->title,
-            seo
+            seo,
+            faqs[]{_key, question, answer}
         }`;
 
         const recentQuery = `*[_type == "post" && slug.current != $slug] | order(publishedAt desc, _createdAt desc)[0...5]{
@@ -137,6 +157,17 @@ const BlogPostPage = () => {
         )
     }
 
+    const faqs = (post.faqs || []).filter((f: any) => f?.question && f?.answer);
+    const faqSchema = faqs.length > 0 ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f: any) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+    } : null;
+
     const seoKeywords = post.seo?.keywords ? post.seo.keywords.join(', ') : post.categories?.join(', ');
 
     return (
@@ -147,6 +178,11 @@ const BlogPostPage = () => {
                 keywords={seoKeywords}
                 image={post.mainImage ? urlFor(post.mainImage).width(1200).url() : undefined}
             />
+            {faqSchema && (
+                <Helmet>
+                    <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+                </Helmet>
+            )}
 
             {/* Immersive Hero Section */}
             <div className="relative h-[60vh] max-h-[600px] w-full overflow-hidden bg-slate-900">
@@ -160,15 +196,15 @@ const BlogPostPage = () => {
             </div>
 
             <div className="container mx-auto max-w-7xl px-4 py-8 md:py-16 -mt-16 md:-mt-24 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-8 xl:gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
 
                     {/* Main Content Column */}
-                    <div className="lg:w-2/3 flex-shrink-0">
+                    <div className="lg:col-span-2 min-w-0">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100"
+                            className="bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-xl border border-slate-100"
                         >
                             {/* Breadcrumb / Back Link */}
                             <Link to="/blog" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary mb-8 transition-colors text-sm font-medium">
@@ -183,7 +219,7 @@ const BlogPostPage = () => {
                                 </div>
                             )}
 
-                            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight text-left break-words">
                                 {post.title}
                             </h1>
 
@@ -208,9 +244,21 @@ const BlogPostPage = () => {
                             </div>
 
                             {/* Main Body */}
-                            <div className="max-w-none">
+                            <div className="max-w-none break-words">
                                 {post.body ? <PortableText value={post.body} components={portableTextComponents} /> : <p className="text-slate-600 leading-relaxed">{post.excerpt}</p>}
                             </div>
+
+                            {/* FAQs */}
+                            {faqs.length > 0 && (
+                                <section className="mt-12 pt-8 border-t border-slate-100">
+                                    <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Frequently Asked Questions</h2>
+                                    <div className="space-y-3">
+                                        {faqs.map((faq: any, i: number) => (
+                                            <BlogFAQItem key={faq._key || i} question={faq.question} answer={faq.answer} />
+                                        ))}
+                                    </div>
+                                </section>
+                            )}
 
                             {/* Share & Tags */}
                             <div className="mt-12 pt-8 border-t border-slate-100">
@@ -236,7 +284,7 @@ const BlogPostPage = () => {
                     </div>
 
                     {/* Sticky Sidebar Column */}
-                    <div className="lg:w-1/3 flex-shrink-0">
+                    <div className="min-w-0">
                         <div className="sticky top-24 space-y-6 max-h-[calc(100vh-7rem)] overflow-y-auto pb-4 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
 
                             {/* Author Card */}
@@ -340,6 +388,31 @@ const BlogPostPage = () => {
 
                 </div>
             </div>
+        </div>
+    );
+};
+
+const BlogFAQItem = ({ question, answer }: { question: string; answer: string }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <div className="rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+            <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen}
+                className="w-full flex items-center justify-between gap-4 p-4 md:p-5 text-left font-semibold text-slate-800 hover:bg-slate-100/70 transition-colors"
+            >
+                <span>{question}</span>
+                <ChevronDown className={`w-5 h-5 flex-shrink-0 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <motion.div
+                initial={false}
+                animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+            >
+                <p className="px-4 md:px-5 pb-5 text-slate-600 leading-relaxed whitespace-pre-line">{answer}</p>
+            </motion.div>
         </div>
     );
 };
