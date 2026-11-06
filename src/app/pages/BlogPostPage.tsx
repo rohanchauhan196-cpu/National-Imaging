@@ -101,7 +101,7 @@ const BlogPostPage = () => {
             seo
         }`;
 
-        const recentQuery = `*[_type == "post" && slug.current != $slug][0..4]{
+        const recentQuery = `*[_type == "post" && slug.current != $slug] | order(publishedAt desc, _createdAt desc)[0...5]{
              title,
              slug,
              mainImage,
@@ -199,7 +199,11 @@ const BlogPostPage = () => {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <Calendar className="w-4 h-4" />
-                                    <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
+                                    <span>{new Date(post.publishedAt).toLocaleDateString('en-GB', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric',
+                                    })}</span>
                                 </div>
                             </div>
 
@@ -288,7 +292,11 @@ const BlogPostPage = () => {
                                                 </h4>
                                                 <div className="flex items-center gap-2 text-xs text-slate-500">
                                                     <Calendar className="w-3 h-3" />
-                                                    {new Date(recent.publishedAt).toLocaleDateString()}
+                                                    {new Date(recent.publishedAt).toLocaleDateString('en-GB', {
+                                                        day: 'numeric',
+                                                        month: 'long',
+                                                        year: 'numeric',
+                                                    })}
                                                 </div>
                                             </div>
                                             <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-primary group-hover:translate-x-1 transition-all" />

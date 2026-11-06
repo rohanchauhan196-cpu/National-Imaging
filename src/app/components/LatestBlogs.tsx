@@ -104,7 +104,11 @@ const LatestBlogs = () => {
                     </span>
                     <span className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
-                      {new Date(blog.publishedAt).toLocaleDateString()}
+                      {new Date(blog.publishedAt).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
                     </span>
                   </div>
                   <h3 className="text-xl mb-3 font-semibold line-clamp-2">{blog.title}</h3>

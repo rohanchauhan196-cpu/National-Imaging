@@ -22,7 +22,7 @@ const BlogPage = () => {
 
     useEffect(() => {
         sanityClient.fetch(
-            `*[_type == "post"]{
+            `*[_type == "post"] | order(publishedAt desc, _createdAt desc){
         title,
         slug,
         mainImage,
@@ -105,7 +105,11 @@ const BlogPage = () => {
                                     <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                                         <span className="flex items-center gap-1">
                                             <Calendar className="w-3.5 h-3.5" />
-                                            {new Date(post.publishedAt).toLocaleDateString()}
+                                            {new Date(post.publishedAt).toLocaleDateString('en-GB', {
+                                                day: 'numeric',
+                                                month: 'long',
+                                                year: 'numeric',
+                                            })}
                                         </span>
                                     </div>
 
