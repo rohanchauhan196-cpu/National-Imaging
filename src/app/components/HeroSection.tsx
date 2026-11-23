@@ -46,7 +46,7 @@ const HeroSection = () => {
           loop
           muted
           playsInline
-          poster="https://images.pexels.com/videos/7088469/pexels-photo-7088469.jpeg"
+          poster="https://www.pexels.com/download/video/7089596/"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
       </div>
