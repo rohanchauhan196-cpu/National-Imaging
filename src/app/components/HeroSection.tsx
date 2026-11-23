@@ -41,7 +41,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 w-full h-full">
         <video
           className="w-full h-full object-cover"
-          src="https://www.pexels.com/download/video/6235189/"
+          src="https://www.pexels.com/download/video/7089596/"
           autoPlay
           loop
           muted
